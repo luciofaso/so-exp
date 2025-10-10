@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoLab - Sociocracy Laboratory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 80px;
+            right: 2rem;
+            z-index: 1100;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.5rem 0.8rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-option:hover {
+            background: rgba(37, 99, 235, 0.1);
+            border-color: #2563EB;
+            transform: translateY(-2px);
+        }
+
+        .lang-option.active {
+            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .flag.fr {
+            background: linear-gradient(to right, #0055a4 33.33%, #ffffff 33.33%, #ffffff 66.66%, #ef4135 66.66%);
+        }
+
+        .flag.it {
+            background: linear-gradient(to right, #009246 33.33%, #ffffff 33.33%, #ffffff 66.66%, #ce2b37 66.66%);
+        }
+
+        .flag.en {
+            background: #012169;
+            position: relative;
+        }
+
+        .flag.en::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 40%, #ffffff 40%, #ffffff 45%, transparent 45%),
+                linear-gradient(-45deg, transparent 40%, #ffffff 40%, #ffffff 45%, transparent 45%),
+                linear-gradient(45deg, transparent 55%, #ffffff 55%, #ffffff 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 55%, #ffffff 55%, #ffffff 60%, transparent 60%);
+        }
+
+        .flag.en::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 30%, #c8102e 30%, #c8102e 35%, transparent 35%),
+                linear-gradient(-45deg, transparent 30%, #c8102e 30%, #c8102e 35%, transparent 35%),
+                linear-gradient(45deg, transparent 65%, #c8102e 65%, #c8102e 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 65%, #c8102e 65%, #c8102e 70%, transparent 70%),
+                linear-gradient(0deg, transparent 43%, #ffffff 43%, #ffffff 57%, transparent 57%),
+                linear-gradient(90deg, transparent 43%, #ffffff 43%, #ffffff 57%, transparent 57%),
+                linear-gradient(0deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%),
+                linear-gradient(90deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%);
+        }
+
+        /* Logo Section - NEW */
+        .logo-showcase {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 80px 2rem 60px;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 56px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid;
+        }
+
+        .circle.large {
+            width: 65px;
+            height: 65px;
+            border-color: #2563EB;
+            top: 7px;
+            left: 7px;
+        }
+
+        .circle.medium {
+            width: 45px;
+            height: 45px;
+            border-color: #3B82F6;
+            top: 17px;
+            left: 25px;
+            opacity: 0.8;
+        }
+
+        .circle.small {
+            width: 32px;
+            height: 32px;
+            border-color: #FBBF24;
+            top: 10px;
+            left: 10px;
+        }
+
+        .logo-text .so {
+            color: #2563EB;
+        }
+
+        .logo-text .lab {
+            color: #FBBF24;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #2563EB;
+            font-style: italic;
+            text-align: left;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            margin-left: 95px;
+            margin-top: -18px;
+            white-space: nowrap;
+        }
+
+        .tagline .sociocracy {
+            color: #2563EB;
+        }
+
+        .tagline .laboratory {
+            color: #FBBF24;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-circle-container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid;
+        }
+
+        .nav-circle.large {
+            width: 34px;
+            height: 34px;
+            border-color: #2563EB;
+            top: 3px;
+            left: 3px;
+        }
+
+        .nav-circle.medium {
+            width: 24px;
+            height: 24px;
+            border-color: #FBBF24;
+            top: 8px;
+            left: 13px;
+        }
+
+        .nav-circle.small {
+            width: 17px;
+            height: 17px;
+            border-color: #60A5FA;
+            top: 5px;
+            left: 5px;
+        }
+
+        .nav-logo-text .so {
+            color: #2563EB;
+        }
+
+        .nav-logo-text .lab {
+            color: #FBBF24;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563EB;
+        }
+
+        .cta-nav {
+            background: #2563EB;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-nav:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #FBBF24 100%);
+            color: white;
+            padding: 100px 2rem 100px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero h1 .small-text {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            background: #FBBF24;
+            color: #1F2937;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #2563EB;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        /* Two Column Section - Pourquoi la Sociocratie */
+        .two-column-section {
+            background: white;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .left-column h2 {
+            font-size: 2.2rem;
+            color: #2563EB;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .left-column p {
+            font-size: 1.1rem;
+            color: #64748B;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .right-column {
+            background: linear-gradient(135deg, #EEF2FF 0%, #FEF3C7 100%);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .principle-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .principle-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .principle-icon {
+            background: #2563EB;
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .principle-content h3 {
+            color: #2563EB;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .principle-content p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* About Section */
+        .about-section {
+            background: #F8FAFC;
+        }
+
+        .about-section h3 {
+            color: #2563EB;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .approach-highlight {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .approach-highlight h3 {
+            color: #2563EB;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .highlight-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-icon {
+            background: #EEF2FF;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: #2563EB;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .highlight-text p {
+            color: #64748B;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Method Section */
+        .method-section {
+            background: white;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .method-card {
+            background: #F8FAFC;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .method-number {
+            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .method-card h3 {
+            color: #2563EB;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .method-card p {
+            color: #64748B;
+            line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: #F8FAFC;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
+            color: white;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h3 {
+            color: #2563EB;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            color: #64748B;
+            line-height: 1.6;
+        }
+
+        /* Approach Section */
+        .approach-section {
+            background: white;
+        }
+
+        .approach-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .approach-content p {
+            font-size: 1.1rem;
+            color: #64748B;
+            line-height: 1.7;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #F8FAFC;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #2563EB;
+        }
+
+        .testimonial p {
+            color: #64748B;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial .quote {
+            font-size: 1.5rem;
+            color: #2563EB;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial .author {
+            color: #2563EB;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #FBBF24 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1F2937;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 40px;
+            }
+
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .circle-container {
+                width: 60px;
+                height: 60px;
+            }
+
+            .circle.large {
+                width: 50px;
+                height: 50px;
+                top: 5px;
+                left: 5px;
+            }
+
+            .circle.medium {
+                width: 35px;
+                height: 35px;
+                top: 12px;
+                left: 18px;
+            }
+
+            .circle.small {
+                width: 25px;
+                height: 25px;
+                top: 8px;
+                left: 8px;
+            }
+
+            .tagline {
+                font-size: 16px;
+                margin-left: 75px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h1 .small-text {
+                font-size: 1.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .method-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <a href="index.html" class="lang-option active">
+            <span class="flag fr"></span>
+            <span>FR</span>
+        </a>
+        <a href="it/index.html" class="lang-option">
+            <span class="flag it"></span>
+            <span>IT</span>
+        </a>
+        <a href="en/index.html" class="lang-option">
+            <span class="flag en"></span>
+            <span>EN</span>
+        </a>
+    </div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <div class="nav-circle-container">
+                        <div class="nav-circle large"></div>
+                        <div class="nav-circle medium"></div>
+                        <div class="nav-circle small"></div>
+                    </div>
+                </div>
+                <span class="nav-logo-text"><span class="so">So</span><span class="lab">Lab</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#sociocratie">Sociocratie</a></li>
+                <li><a href="#about">Qui suis-je</a></li>
+                <li><a href="#methode">Méthode</a></li>
+                <li><a href="#processus">Processus</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+            </ul>
+            <a href="#contact" class="cta-nav">Démarrer</a>
+        </nav>
+    </header>
+
+    <!-- Logo Showcase Section - NEW -->
+    <section class="logo-showcase">
+        <div class="logo-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="circle-container">
+                        <div class="circle large"></div>
+                        <div class="circle medium"></div>
+                        <div class="circle small"></div>
+                    </div>
+                </div>
+                <span class="logo-text"><span class="so">So</span><span class="lab">Lab</span></span>
+            </div>
+            <div class="tagline"><span class="sociocracy">sociocracy</span> <span class="laboratory">laboratory</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><span class="small-text">Abandonnez les vieux schémas.</span>Expérimentez la force de la Sociocratie.
+            </h1>
+            <p class="subtitle">Accompagnement expert et conseil pour l'adoption de pratiques sociocratiques dans votre
+                organisation. Transformez votre façon de collaborer, de prendre des décisions et de libérer le potentiel
+                de chacun·e.</p>
+            <a href="#contact" class="cta-button">Commencer l'Expérience</a>
+        </div>
+    </section>
+
+    <!-- Two Column Section - Pourquoi la Sociocratie -->
+    <section class="two-column-section" id="sociocratie">
+        <div class="container">
+            <div class="two-columns">
+                <div class="left-column">
+                    <h2>Pourquoi la Sociocratie ?</h2>
+                    <p>Beaucoup d'organisations restent figées dans des structures hiérarchiques rigides, qui freinent
+                        créativité, engagement et initiative. Les personnes se sentent désemparées, les décisions sont
+                        lentes, et l'innovation en souffre.</p>
+                    <p>La sociocratie, née aux Pays-Bas et utilisée dans le monde entier, est une technologie sociale
+                        qui propose des pratiques éprouvées pour une collaboration plus efficace et inclusive : pouvoir
+                        partagé, écoute de chacun·e.</p>
+                    <p>Avec Sociocratie 3.0, la version moderne et agile, nous aidons les organisations à libérer le
+                        potentiel de chacun·e, pour innover ensemble et s'adapter rapidement aux changements.</p>
+                </div>
+                <div class="right-column">
+                    <div class="principle-item">
+                        <div class="principle-icon">⚡</div>
+                        <div class="principle-content">
+                            <h3>Équipes auto-organisées</h3>
+                            <p>Équipes auto-organisées avec un objectif clair et l'autorité de prendre des décisions
+                                dans leur domaine.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">🔗</div>
+                        <div class="principle-content">
+                            <h3>Connexion bidirectionnelle</h3>
+                            <p>Connexion bidirectionnelle entre les cercles assurant que l'information circule dans
+                                toute l'organisation.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">✅</div>
+                        <div class="principle-content">
+                            <h3>Décisions par consentement</h3>
+                            <p>Les décisions avancent quand il n'y a pas d'objections motivées, s'assurant que la voix
+                                de chacun·e compte.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">👥</div>
+                        <div class="principle-content">
+                            <h3>Sélection transparente</h3>
+                            <p>Processus transparent pour sélectionner les personnes pour les rôles basé sur la
+                                compétence et l'adéquation.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">🔄</div>
+                        <div class="principle-content">
+                            <h3>Feedback continu</h3>
+                            <p>Processus itératif de retour d'information pour améliorer les rôles et les
+                                responsabilités
+                                au sein de l'organisation.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Am I Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="two-columns">
+                <div class="left-column">
+                    <h2>Qui suis-je ?</h2>
+                    <h3>Je m'appelle Luciano Raso</h3>
+                    <p><strong>Ma mission :</strong> Je reconnais le besoin et les difficultés d'être et construire
+                        ensemble, et je m'engage pour accompagner les individus et les organisations pour construire un
+                        monde plus démocratique et communautaire à travers la sociocratie.</p>
+                    <p><strong>Mes expériences :</strong> Formé à la sociocratie par Sociocracy for All, j'accompagne
+                        plusieurs organisations vers la gouvernance sociocratique, en France et Italie.</p>
+                    <p><strong>Mon approche :</strong> Mon background de chercheur avec une expertise en analyse des
+                        systèmes complexes me permet d'accompagner les organisations avec une approche structurée et
+                        directe, en éclairant les nuances et conséquences de chaque choix organisationnel.</p>
+                </div>
+                <div class="right-column">
+                    <div class="approach-highlight">
+                        <h3>Pourquoi choisir SoLab ?</h3>
+                        <div class="highlight-point">
+                            <div class="highlight-icon">🔬</div>
+                            <div class="highlight-text">
+                                <h4>Approche Scientifique</h4>
+                                <p>Background de recherche en systèmes complexes appliqué à l'organisation collective
+                                </p>
+                            </div>
+                        </div>
+                        <div class="highlight-point">
+                            <div class="highlight-icon">🎯</div>
+                            <div class="highlight-text">
+                                <h4>Méthode Structurée</h4>
+                                <p>Accompagnement direct et organisé, adapté aux besoins des entreprises</p>
+                            </div>
+                        </div>
+                        <div class="highlight-point">
+                            <div class="highlight-icon">🌍</div>
+                            <div class="highlight-text">
+                                <h4>Expérience Internationale</h4>
+                                <p>Interventions en France et Italie, adaptation culturelle</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section class="method-section" id="methode">
+        <div class="container">
+            <h2 class="section-title">Notre Méthode</h2>
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-number">1</div>
+                    <h3>Diagnostic</h3>
+                    <p>Nous commençons par comprendre vos défis actuels et concevons une feuille de route sur mesure
+                        pour implémenter les pratiques sociocratiques dans votre contexte spécifique.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-number">2</div>
+                    <h3>Accompagnement</h3>
+                    <p>Guidance étape par étape à travers le processus d'adoption, avec facilitation pratique et
+                        coaching pour assurer des transitions en douceur.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-number">3</div>
+                    <h3>Suivi</h3>
+                    <p>Soutien continu à travers des points réguliers, formation avancée, et adaptation basée sur vos
+                        besoins évolutifs et apprentissages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="processus">
+        <div class="container">
+            <h2 class="section-title">Comment ça marche ?</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Exploration</h3>
+                    <p>Tout commence par votre besoin de changement et le courage d'explorer des modes de gouvernance
+                        plus collaboratifs et inclusifs comme la sociocratie.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Conception</h3>
+                    <p>Nous explorons ensemble votre réalité actuelle, vos ressources et vos ambitions pour concevoir
+                        une trajectoire sur mesure du point A au point B.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Implémentation</h3>
+                    <p>Nous implémentons de petits changements dans une dynamique agile, faite de petites
+                        implémentations et d'apprentissage continu, découvrant ce qui fonctionne pour vous.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach-section">
+        <div class="container">
+            <div class="approach-content">
+                <h2 class="section-title">Notre Approche</h2>
+                <p>Mon rôle est de vous aider à découvrir les pratiques adaptées à vos besoins, en éclairant les nuances
+                    et conséquences de chaque choix.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="temoignages">
+        <div class="container">
+            <h2 class="section-title">Temoinages</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="quote">"</div>
+                    <p>Le facilitateur a été très clair, consciencieux et enthousiaste dans sa manière de proposer la
+                        sociocratie au sein de notre jeune organisation. Il a réussi à l'introduire dans un groupe déjà
+                        existant, en minimisant les résistances, en avançant étape par étape, et en expliquant toujours
+                        les concepts avec précision.</p>
+                    <div class="author">— Federico Felici, Mankind Project Italia</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"</div>
+                    <p>Il a su s'adapter finement à notre culture et à notre rythme. Grâce à son approche progressive et
+                        à son écoute, la sociocratie s'est intégrée naturellement dans notre manière de fonctionner. Sa
+                        présence discrète mais structurante a facilité des changements concrets et durables.</p>
+                    <div class="author">— Damiano Furlan, Uomini Consapevoli</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>Faisons nous un selfie !</h2>
+            <h3>En savoir plus ?</h3>
+            <p>Réservez un appel découverte gratuit de 30 minutes pour explorer comment nous pouvons vous aider à
+                avancer plus rapidement et efficacement vers vos objectifs.</p>
+            <a href="https://calendar.app.google/hSVtyEpByKfQ9cfDA" class="cta-button">Réservez votre appel
+                découverte</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SoLab - Sociocracy Laboratory. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
