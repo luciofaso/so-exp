@@ -171,11 +171,86 @@
             color: #2563EB;
         }
 
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto 4rem;
+            overflow: hidden;
+        }
+
+        .carousel-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            position: relative;
+        }
+
         .formations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 4rem;
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            margin-bottom: 2rem;
+        }
+
+        .formation-card {
+            flex: 0 0 calc((100% - 4rem) / 3);
+            max-width: calc((100% - 4rem) / 3);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: #2563EB;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            background: #CBD5E1;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: #2563EB;
+            width: 30px;
+            border-radius: 6px;
         }
 
         .formation-card {
@@ -238,6 +313,39 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.3rem;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .price-category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .price-category-label {
+            font-size: 0.75rem;
+            color: #64748B;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .price-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2563EB;
+        }
+
+        .price-separator {
+            color: #CBD5E1;
+            font-weight: 300;
         }
 
         .original-price {
@@ -322,6 +430,43 @@
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
         }
 
+        /* NUOVO: Sezione Calendario */
+        .calendar-section {
+            padding: 4rem 0;
+            background: #F8FAFC;
+        }
+
+        .calendar-section h2 {
+            text-align: center;
+            color: #2563EB;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-section>p {
+            text-align: center;
+            color: #64748B;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calendar-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .calendar-container iframe {
+            width: 100%;
+            border-radius: 8px;
+        }
+
         .financial-note {
             background: #EEF2FF;
             padding: 2rem;
@@ -352,13 +497,35 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .formation-card {
+                flex: 0 0 calc((100% - 2rem) / 2);
+                max-width: calc((100% - 2rem) / 2);
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .formations-grid {
-                grid-template-columns: 1fr;
+            .formation-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            .carousel-wrapper {
+                padding: 0 50px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .calendar-section h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -401,142 +568,323 @@
                     <p><strong>Public cible :</strong> Nouveaux adoptants, managers, équipes entières souhaitant
                         transformer leur mode de gouvernance et de collaboration.</p>
                 </div>
-            </div>
-
-            <div class="formations-grid">
-                <!-- Formation 1h -->
-                <div class="formation-card">
-                    <div class="formation-header free">
-                        <div class="formation-duration">1h</div>
-                        <div class="formation-type">Session découverte</div>
-                    </div>
-                    <div class="formation-body">
-                        <div class="formation-price">
-                            <span class="free-price">Gratuit</span>
-                        </div>
-                        <div class="formation-date">
-                            📅 Prochaine session : 20 Novembre 2025
-                        </div>
-                        <div class="formation-details">
-                            <h4>Format</h4>
-                            <p>En ligne via Zoom</p>
-                        </div>
-                        <div class="formation-outcome">
-                            <strong>Ce que vous saurez faire :</strong>
-                            <p>Comprendre si la sociocratie convient à votre organisation et identifier vos premiers pas
-                                possibles.</p>
-                        </div>
-                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1h Gratuit"
-                            class="formation-button">S'inscrire
-                            gratuitement</a>
-                    </div>
-                </div>
-
-                <!-- Formation 4h -->
-                <div class="formation-card">
-                    <div class="formation-header">
-                        <div class="formation-duration">4h</div>
-                        <div class="formation-type">Formation intensive</div>
-                    </div>
-                    <div class="formation-body">
-                        <div class="formation-price">
-                            <div class="price-group">
-                                <div class="price-label">Groupe</div>
-                                <span class="original-price">600€</span>
-                                <span class="discounted-price">350€</span>
-                            </div>
-                            <div class="price-group">
-                                <div class="price-label">Par personne (min. 4)</div>
-                                <span class="discounted-price">100€</span>
-                            </div>
-                        </div>
-                        <div class="formation-details">
-                            <h4>Format</h4>
-                            <p>Présentiel ou en ligne</p>
-                        </div>
-                        <div class="formation-outcome">
-                            <strong>Ce que vous saurez faire :</strong>
-                            <p>Comprendre les bases de la sociocratie et identifier comment l'appliquer dans votre
-                                contexte organisationnel.</p>
-                        </div>
-                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 4h"
-                            class="formation-button">Réserver cette
-                            formation</a>
-                    </div>
-                </div>
-
-                <!-- Formation 1 jour -->
-                <div class="formation-card">
-                    <div class="formation-header">
-                        <div class="formation-duration">1 jour</div>
-                        <div class="formation-type">Formation pratique</div>
-                    </div>
-                    <div class="formation-body">
-                        <div class="formation-price">
-                            <div class="price-group">
-                                <div class="price-label">Groupe</div>
-                                <span class="original-price">1 200€</span>
-                                <span class="discounted-price">700€</span>
-                            </div>
-                            <div class="price-group">
-                                <div class="price-label">Par personne (min. 4)</div>
-                                <span class="discounted-price">200€</span>
-                            </div>
-                        </div>
-                        <div class="formation-details">
-                            <h4>Format</h4>
-                            <p>Présentiel ou en ligne</p>
-                        </div>
-                        <div class="formation-outcome">
-                            <strong>Ce que vous saurez faire :</strong>
-                            <p>Pratiquer les outils essentiels de la sociocratie et démarrer avec vos premières
-                                décisions sociocratiques dans votre organisation.</p>
-                        </div>
-                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1 jour"
-                            class="formation-button">Réserver cette
-                            formation</a>
-                    </div>
-                </div>
-
-                <!-- Formation 2 jours -->
-                <div class="formation-card">
-                    <div class="formation-header">
-                        <div class="formation-duration">2 jours</div>
-                        <div class="formation-type">Formation complète</div>
-                    </div>
-                    <div class="formation-body">
-                        <div class="formation-price">
-                            <div class="price-group">
-                                <div class="price-label">Groupe</div>
-                                <span class="original-price">2 000€</span>
-                                <span class="discounted-price">1 200€</span>
-                            </div>
-                            <div class="price-group">
-                                <div class="price-label">Par personne (min. 4)</div>
-                                <span class="discounted-price">350€</span>
-                            </div>
-                        </div>
-                        <div class="formation-details">
-                            <h4>Format</h4>
-                            <p>Présentiel ou en ligne</p>
-                        </div>
-                        <div class="formation-outcome">
-                            <strong>Ce que vous saurez faire :</strong>
-                            <p>Maîtriser l'ensemble des pratiques sociocratiques et implémenter la sociocratie de
-                                manière autonome dans votre organisation.</p>
-                        </div>
-                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 2 jours"
-                            class="formation-button">Réserver cette
-                            formation</a>
-                    </div>
+                <div class="formation-date" style="max-width: 600px; margin: 2rem auto 0;">
+                    📅 Consultez le calendrier en bas de page pour les prochaines sessions disponibles
                 </div>
             </div>
 
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="formations-grid" id="carousel">
+                        <!-- Formation 1h -->
+                        <div class="formation-card">
+                            <div class="formation-header free">
+                                <div class="formation-duration">1h</div>
+                                <div class="formation-type">Session découverte</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <span class="free-price">Gratuit</span>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>En ligne via Zoom</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>Ce que vous saurez faire :</strong>
+                                    <p>Comprendre si la sociocratie convient à votre organisation et identifier vos
+                                        premiers pas
+                                        possibles.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1h Gratuit"
+                                    class="formation-button">S'inscrire
+                                    gratuitement</a>
+                            </div>
+                        </div>
+
+                        <!-- Formation 4h -->
+                        <div class="formation-card">
+                            <div class="formation-header">
+                                <div class="formation-duration">4h</div>
+                                <div class="formation-type">Formation intensive</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <div class="price-group">
+                                        <div class="price-label">Groupe</div>
+                                        <span class="original-price">600€</span>
+                                        <span class="discounted-price">350€</span>
+                                    </div>
+                                    <div class="price-group">
+                                        <div class="price-label">Par personne (min. 4)</div>
+                                        <div class="price-row">
+                                            <div class="price-category">
+                                                <span class="price-category-label">Entreprise</span>
+                                                <span class="price-value">100€</span>
+                                            </div>
+                                            <span class="price-separator">|</span>
+                                            <div class="price-category">
+                                                <span class="price-category-label">Particuliers</span>
+                                                <span class="price-value">50€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>Présentiel ou en ligne</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>Ce que vous saurez faire :</strong>
+                                    <p>Comprendre les bases de la sociocratie et identifier comment l'appliquer dans
+                                        votre
+                                        contexte organisationnel.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 4h"
+                                    class="formation-button">Réserver cette
+                                    formation</a>
+                            </div>
+                        </div>
+
+                        <!-- Formation 1 jour -->
+                        <div class="formation-card">
+                            <div class="formation-header">
+                                <div class="formation-duration">1 jour</div>
+                                <div class="formation-type">Formation pratique</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <div class="price-group">
+                                        <div class="price-label">Groupe</div>
+                                        <span class="original-price">1 200€</span>
+                                        <span class="discounted-price">700€</span>
+                                    </div>
+                                    <div class="price-group">
+                                        <div class="price-label">Par personne (min. 4)</div>
+                                        <div class="price-row">
+                                            <div class="price-category">
+                                                <span class="price-category-label">Entreprise</span>
+                                                <span class="price-value">200€</span>
+                                            </div>
+                                            <span class="price-separator">|</span>
+                                            <div class="price-category">
+                                                <span class="price-category-label">Particuliers</span>
+                                                <span class="price-value">100€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>Présentiel ou en ligne</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>Ce que vous saurez faire :</strong>
+                                    <p>Pratiquer les outils essentiels de la sociocratie et démarrer avec vos premières
+                                        décisions sociocratiques dans votre organisation.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1 jour"
+                                    class="formation-button">Réserver cette
+                                    formation</a>
+                            </div>
+                        </div>
+
+                        <!-- Formation 2 jours -->
+                        <div class="formation-card">
+                            <div class="formation-header">
+                                <div class="formation-duration">2 jours</div>
+                                <div class="formation-type">Formation complète</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <div class="price-group">
+                                        <div class="price-label">Groupe</div>
+                                        <span class="original-price">2 000€</span>
+                                        <span class="discounted-price">1 200€</span>
+                                    </div>
+                                    <div class="price-group">
+                                        <div class="price-label">Par personne (min. 4)</div>
+                                        <div class="price-row">
+                                            <div class="price-category">
+                                                <span class="price-category-label">Entreprise</span>
+                                                <span class="price-value">350€</span>
+                                            </div>
+                                            <span class="price-separator">|</span>
+                                            <div class="price-category">
+                                                <span class="price-category-label">Particuliers</span>
+                                                <span class="price-value">175€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>Présentiel ou en ligne</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>Ce que vous saurez faire :</strong>
+                                    <p>Maîtriser l'ensemble des pratiques sociocratiques et implémenter la sociocratie
+                                        de
+                                        manière autonome dans votre organisation.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 2 jours"
+                                    class="formation-button">Réserver cette
+                                    formation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)">‹</button>
+                        <div class="carousel-dots" id="dots"></div>
+                        <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)">›</button>
+                    </div>
+                </div>
+            </div>
             <div class="financial-note">
                 <p><strong>L'argent ne doit pas être un obstacle.</strong><br>
                     Si le coût de la formation représente une difficulté pour vous ou votre organisation, contactez-nous
                     pour discuter d'un tarif adapté à votre situation. Nous croyons que la sociocratie doit être
                     accessible à tous ceux qui souhaitent transformer leur manière de collaborer.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentIndex = 0;
+        const carousel = document.getElementById('carousel');
+        const cards = document.querySelectorAll('.formation-card');
+        const totalCards = cards.length;
+        const dotsContainer = document.getElementById('dots');
+        let autoScrollInterval;
+
+        // Determine cards per view based on screen size
+        function getCardsPerView() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        // Calculate total pages
+        function getTotalPages() {
+            return Math.ceil(totalCards / getCardsPerView());
+        }
+
+        // Create dots
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            const totalPages = getTotalPages();
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => {
+                    goToSlide(i);
+                    resetAutoScroll();
+                };
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Move carousel
+        function moveCarousel(direction) {
+            const totalPages = getTotalPages();
+            currentIndex += direction;
+
+            // Loop carousel
+            if (currentIndex < 0) currentIndex = totalPages - 1;
+            if (currentIndex >= totalPages) currentIndex = 0;
+
+            updateCarousel();
+        }
+
+        // Go to specific slide
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Update carousel position and buttons
+        function updateCarousel() {
+            const cardsPerView = getCardsPerView();
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem = 32px
+            const offset = currentIndex * (cardWidth + gap) * cardsPerView;
+
+            carousel.style.transform = `translateX(-${offset}px)`;
+
+            // Update dots
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+
+            // Update buttons
+            const totalPages = getTotalPages();
+            document.getElementById('prevBtn').disabled = false;
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        // Auto scroll
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                moveCarousel(1);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            startAutoScroll();
+        });
+
+        // Initialize
+        createDots();
+        updateCarousel();
+        startAutoScroll();
+
+        // Handle resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                currentIndex = 0;
+                createDots();
+                updateCarousel();
+                resetAutoScroll();
+            }, 250);
+        });
+
+        // Update buttons click to reset auto scroll
+        document.getElementById('prevBtn').onclick = () => {
+            moveCarousel(-1);
+            resetAutoScroll();
+        };
+
+        document.getElementById('nextBtn').onclick = () => {
+            moveCarousel(1);
+            resetAutoScroll();
+        };
+    </script>
+
+    <!-- NUOVO: Sezione Calendario -->
+    <section class="calendar-section">
+        <div class="container">
+            <h2>📅 Prochaines Sessions</h2>
+            <p>Consultez toutes nos sessions programmées et inscrivez-vous directement.</p>
+            <div class="calendar-container">
+                <!-- SOSTITUISCI YOUR_CALENDAR_ID_HERE CON L'ID DEL TUO CALENDARIO -->
+                <iframe
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FParis&showTitle=0&showNav=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&src=ebef58b742012f0561103bee7b53df0006ddb594aa7e9cd43f2012a0175c80df@group.calendar.google.com"
+                    style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </section>
