@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoLab - Sociocracy Laboratory</title>
+    <title>SoExp - The Sociocracy Experiment</title>
     <style>
         * {
             margin: 0;
@@ -181,7 +181,7 @@
             color: #2563EB;
         }
 
-        .logo-text .lab {
+        .logo-text .exp {
             color: #FBBF24;
         }
 
@@ -201,7 +201,7 @@
             color: #2563EB;
         }
 
-        .tagline .laboratory {
+        .tagline .experiment {
             color: #FBBF24;
         }
 
@@ -282,7 +282,7 @@
             color: #2563EB;
         }
 
-        .nav-logo-text .lab {
+        .nav-logo-text .exp {
             color: #FBBF24;
         }
 
@@ -390,6 +390,49 @@
             text-align: center;
             margin-bottom: 3rem;
             font-weight: 700;
+        }
+
+
+        /* Laboratory Section */
+        .laboratory-section {
+            background: white;
+            padding: 4rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .laboratory-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .laboratory-intro {
+            font-size: 1.25rem;
+            color: #1F2937;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .laboratory-details {
+            font-size: 1.1rem;
+            color: #64748B;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .laboratory-mission {
+            font-size: 1.1rem;
+            color: #2563EB;
+            font-style: italic;
+            line-height: 1.7;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .highlight-text {
+            color: #2563EB;
+            font-weight: 600;
         }
 
         /* Two Column Section - Pourquoi la Sociocratie */
@@ -770,6 +813,379 @@
                 font-size: 2rem;
             }
         }
+
+        .articles-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .article-card {
+            background: #F8FAFC;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-date {
+            color: #FBBF24;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-title {
+            color: #2563EB;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .article-link {
+            color: #2563EB;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .article-link:hover {
+            gap: 0.8rem;
+        }
+
+        .article-link::after {
+            content: '→';
+            font-size: 1.2rem;
+        }
+
+        .loading-message {
+            text-align: center;
+            color: #64748B;
+            font-size: 1.1rem;
+            padding: 3rem 0;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #EF4444;
+            font-size: 1rem;
+            padding: 2rem;
+            background: #FEE2E2;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* NUOVA SEZIONE NEWSLETTER */
+        .newsletter-section {
+            background: #F8FAFC;
+            padding: 5rem 0;
+        }
+
+        .newsletter-cta-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-cta-box h2 {
+            color: #2563EB;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .newsletter-cta-box p {
+            color: #64748B;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #2563EB;
+        }
+
+        .newsletter-button {
+            background: #2563EB;
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .newsletter-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .newsletter-message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .newsletter-message.success {
+            background: #D1FAE5;
+            color: #065F46;
+            display: block;
+        }
+
+        .newsletter-message.error {
+            background: #FEE2E2;
+            color: #991B1B;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-button {
+                width: 100%;
+            }
+        }
+
+        /* Offers Section */
+        .offers-section {
+            background: #F8FAFC;
+            padding: 5rem 0;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .offer-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, padding 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+
+        .offer-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            transition: font-size 0.3s;
+        }
+
+        .offer-card:hover .offer-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .offer-card h3 {
+            color: #2563EB;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            transition: font-size 0.3s, margin-bottom 0.3s;
+        }
+
+        .offer-card:hover h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .offer-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+
+        .offer-card:hover .offer-details {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .offer-card>p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .offer-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .offer-features li {
+            color: #64748B;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .offer-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2563EB;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .offer-button {
+            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.3s;
+            display: inline-block;
+            margin-top: auto;
+        }
+
+        .offer-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .offer-card {
+                min-height: auto;
+            }
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .partner-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-card a {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .partner-card img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
     </style>
 </head>
 
@@ -800,7 +1216,7 @@
                         <div class="nav-circle small"></div>
                     </div>
                 </div>
-                <span class="nav-logo-text"><span class="so">So</span><span class="lab">Lab</span></span>
+                <span class="nav-logo-text"><span class="so">So</span><span class="exp">Exp</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="#sociocratie">Sociocratie</a></li>
@@ -824,14 +1240,14 @@
                         <div class="circle small"></div>
                     </div>
                 </div>
-                <span class="logo-text"><span class="so">So</span><span class="lab">Lab</span></span>
+                <span class="logo-text"><span class="so">So</span><span class="exp">Exp</span></span>
             </div>
-            <div class="tagline"><span class="sociocracy">sociocracy</span> <span class="laboratory">laboratory</span>
+            <div class="tagline"><span class="sociocracy">sociocracy</span> <span class="experiment">experiment</span>
             </div>
         </div>
     </section>
 
-    <!-- Hero Section -->
+    <!-- Hero Section -->.
     <section class="hero">
         <div class="hero-content">
             <h1><span class="small-text">Abandonnez les vieux schémas.</span>Expérimentez la force de la Sociocratie.
@@ -839,9 +1255,33 @@
             <p class="subtitle">Accompagnement expert et conseil pour l'adoption de pratiques sociocratiques dans votre
                 organisation. Transformez votre façon de collaborer, de prendre des décisions et de libérer le potentiel
                 de chacun·e.</p>
-            <a href="#contact" class="cta-button">Commencer l'Expérience</a>
+
+            <a href="#contact" class="cta-button">Quel est votre défi ?</a>
+
+            <div class="hero-markets">
+                <p class="markets-intro"><strong>Particulièrement efficace pour :</strong></p>
+                <div class="market-list">
+                    <div class="market-item">
+                        <span class="market-icon">⚡</span>
+                        <span class="market-text">Agences tech & digitales qui veulent débloquer les décisions</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-icon">🤝</span>
+                        <span class="market-text">Coopératives et entreprise de l'ESS qui veulent combiner démocratie et
+                            efficacité</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-icon">👨‍👩‍👧‍👦</span>
+                        <span class="market-text">Entreprises familiales qui préparent la nouvelle génération</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+
+
+
 
     <!-- Two Column Section - Pourquoi la Sociocratie -->
     <section class="two-column-section" id="sociocratie">
@@ -924,7 +1364,7 @@
                 </div>
                 <div class="right-column">
                     <div class="approach-highlight">
-                        <h3>Pourquoi choisir SoLab ?</h3>
+                        <h3>Pourquoi choisir SoExp ?</h3>
                         <div class="highlight-point">
                             <div class="highlight-icon">🔬</div>
                             <div class="highlight-text">
@@ -953,55 +1393,32 @@
         </div>
     </section>
 
-    <!-- Method Section -->
-    <section class="method-section" id="methode">
-        <div class="container">
-            <h2 class="section-title">Notre Méthode</h2>
-            <div class="method-grid">
-                <div class="method-card">
-                    <div class="method-number">1</div>
-                    <h3>Diagnostic</h3>
-                    <p>Nous commençons par comprendre vos défis actuels et concevons une feuille de route sur mesure
-                        pour implémenter les pratiques sociocratiques dans votre contexte spécifique.</p>
-                </div>
-                <div class="method-card">
-                    <div class="method-number">2</div>
-                    <h3>Accompagnement</h3>
-                    <p>Guidance étape par étape à travers le processus d'adoption, avec facilitation pratique et
-                        coaching pour assurer des transitions en douceur.</p>
-                </div>
-                <div class="method-card">
-                    <div class="method-number">3</div>
-                    <h3>Suivi</h3>
-                    <p>Soutien continu à travers des points réguliers, formation avancée, et adaptation basée sur vos
-                        besoins évolutifs et apprentissages.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section" id="processus">
+    <section class="process-section">
         <div class="container">
             <h2 class="section-title">Comment ça marche ?</h2>
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <h3>Exploration</h3>
-                    <p>Tout commence par votre besoin de changement et le courage d'explorer des modes de gouvernance
-                        plus collaboratifs et inclusifs comme la sociocratie.</p>
+                    <h3>Exploration & Diagnostic</h3>
+                    <p>Votre besoin de changement rencontre notre analyse de vos défis actuels. Nous explorons ensemble
+                        votre réalité, vos ressources et vos ambitions.</p>
+                    <p class="step-result"><strong>→ Résultat :</strong> Feuille de route sur mesure pour votre
+                        transformation</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">2</div>
-                    <h3>Conception</h3>
-                    <p>Nous explorons ensemble votre réalité actuelle, vos ressources et vos ambitions pour concevoir
-                        une trajectoire sur mesure du point A au point B.</p>
+                    <h3>Conception & Accompagnement</h3>
+                    <p>Nous concevons votre trajectoire du point A au point B et vous guidons étape par étape avec
+                        facilitation pratique et coaching.</p>
+                    <p class="step-result"><strong>→ Résultat :</strong> Pratiques sociocratiques adaptées à votre
+                        contexte spécifique</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
-                    <h3>Implémentation</h3>
-                    <p>Nous implémentons de petits changements dans une dynamique agile, faite de petites
-                        implémentations et d'apprentissage continu, découvrant ce qui fonctionne pour vous.</p>
+                    <h3>Implémentation & Suivi</h3>
+                    <p>Nous implémentons de petits changements dans une dynamique agile, avec soutien continu et
+                        adaptation basée sur vos apprentissages.</p>
+                    <p class="step-result"><strong>→ Résultat :</strong> Transformation durable et équipes autonomes</p>
                 </div>
             </div>
         </div>
@@ -1012,11 +1429,86 @@
         <div class="container">
             <div class="approach-content">
                 <h2 class="section-title">Notre Approche</h2>
-                <p>Mon rôle est de vous aider à découvrir les pratiques adaptées à vos besoins, en éclairant les nuances
-                    et conséquences de chaque choix.</p>
+                <strong class="highlight-text">SoExp est un cabinet spécialisé en transformation de gouvernance par
+                    la sociocratie agile</strong> :
+                Nous aidons les organisations à adopter des pratiques éprouvées, adaptées à leur contexte
+                spécifique, pour améliorer l'efficacité,
+                l'inclusivité et la répartition du pouvoir dans les équipes.
+
+                <p>Notre approche est flexible et progressive, combinant sociocratie et principes d'agilité.
+                    Nous introduisons les pratiques progressivement pour construire confiance et expérience.
+                    Notre rôle est de vous aider à découvrir les pratiques adaptées à vos besoins,
+                    en éclairant les nuances et conséquences de chaque choix.</p>
             </div>
         </div>
     </section>
+
+
+    <!-- Offers Section -->
+    <section class="offers-section" id="offres">
+        <div class="container">
+            <h2 class="section-title">Nos offres</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-icon">📚</div>
+                    <h3>Formation</h3>
+                    <div class="offer-details">
+                        <p>Formations pratiques pour maîtriser les outils et pratiques sociocratiques. Développez les
+                            compétences de vos équipes pour une collaboration plus fluide et des décisions plus
+                            inclusives.</p>
+                        <ul class="offer-features">
+                            <li>Ateliers interactifs</li>
+                            <li>Pratiques concrètes</li>
+                            <li>Formation certifiante</li>
+                            <li>Adaptation à votre contexte</li>
+                        </ul>
+                    </div>
+                    <a href="training.html" class="offer-button">Découvrir nos formations</a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">🤝</div>
+                    <h3>Conseil</h3>
+                    <div class="offer-details">
+                        <p>Accompagnement personnalisé pour transformer votre organisation avec la sociocratie. Nous
+                            vous guidons étape par étape dans votre transition vers une gouvernance plus collaborative
+                            et efficace.</p>
+                        <ul class="offer-features">
+                            <li>Diagnostic organisationnel</li>
+                            <li>Conception sur mesure</li>
+                            <li>Facilitation et coaching</li>
+                            <li>Suivi et ajustements</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="offer-button">Démarrer votre transformation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section" id="partenaires">
+        <div class="container">
+            <h2 class="section-title">Nos partenaires</h2>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <a href="https://www.sociocracyforall.org" target="_blank" rel="noopener noreferrer">
+                        <img src="images/sofa-logo.webp" alt="Sociocracy for All">
+                    </a>
+                </div>
+                <div class="partner-card">
+                    <a href="https://www.sociocratie-france.fr" target="_blank" rel="noopener noreferrer">
+                        <img src="images/cfs-logo.png" alt="Centre Français de la Sociocratie">
+                    </a>
+                </div>
+                <div class="partner-card">
+                    <a href="https://ecovillaggi.it" target="_blank" rel="noopener noreferrer">
+                        <img src="images/rive-logo.png" alt="RIVE - Rete Italiana Villaggi Ecologici">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Testimonials Section -->
     <section class="testimonials" id="temoignages">
@@ -1042,6 +1534,95 @@
         </div>
     </section>
 
+    <section class="articles-section" id="articoli">
+        <div class="container">
+            <h2 class="section-title">Articles</h2>
+            <div id="articles-container">
+                <div class="loading-message">Chargement articles...</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Funzione per caricare e visualizzare gli articoli da Substack
+        async function loadSubstackArticles() {
+            const container = document.getElementById('articles-container');
+            const feedUrl = 'https://sociocracyexperiment-fr.substack.com/feed';
+
+            try {
+                // Usa un servizio CORS proxy per leggere il feed RSS
+                const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
+                const data = await response.json();
+
+                if (data.status !== 'ok') {
+                    throw new Error('Errore nel caricamento del feed');
+                }
+
+                // Prendi gli ultimi 6 articoli
+                const articles = data.items.slice(0, 6);
+
+                // Crea l'HTML per gli articoli
+                const articlesHTML = articles.map(article => {
+                    // Formatta la data
+                    const date = new Date(article.pubDate);
+                    const formattedDate = date.toLocaleDateString('it-IT', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+
+                    // Pulisci l'estratto da tag HTML e limita la lunghezza
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = article.description;
+                    let excerpt = tempDiv.textContent || tempDiv.innerText || '';
+                    excerpt = excerpt.substring(0, 150) + '...';
+
+                    return `
+                        <div class="article-card">
+                            <div class="article-content">
+                                <div class="article-date">${formattedDate}</div>
+                                <h3 class="article-title">${article.title}</h3>
+                                <p class="article-excerpt">${excerpt}</p>
+                                <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="article-link">
+                                    Leggi l'articolo
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                container.innerHTML = `<div class="articles-grid">${articlesHTML}</div>`;
+
+            } catch (error) {
+                console.error('Errore nel caricamento degli articoli:', error);
+                container.innerHTML = `
+                    <div class="error-message">
+                        Impossible de charger les articles. 
+                        <a href="https://sociocracyexperimentfrance.substack.com" target="_blank" style="color: #2563EB; font-weight: 600;">
+                            Visitez le blog
+                        </a>
+                    </div>
+                `;
+            }
+        }
+
+        // Carica gli articoli quando la pagina è pronta
+        document.addEventListener('DOMContentLoaded', loadSubstackArticles);
+    </script>
+
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-cta-box">
+                <h2>Du Laboratoire : Aperçus et Réflexions</h2>
+                <p>Expériences concrètes, réflexions pratiques et pistes pour repenser la collaboration dans les
+                    organisations.</p>
+                <a href="https://sociocracyexperimentfrance.substack.com/embed" target="_blank"
+                    rel="noopener noreferrer" class="cta-button">S'inscrire à la Newsletter</a>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Final CTA -->
     <section class="final-cta" id="contact">
         <div class="container">
@@ -1057,7 +1638,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 SoLab - Sociocracy Laboratory. Tous droits réservés.</p>
+            <p>&copy; 2025 SoExp - The Sociocracy Experiment. Tous droits réservés.</p>
         </div>
     </footer>
 </body>

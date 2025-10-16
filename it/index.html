@@ -880,6 +880,179 @@
                 width: 100%;
             }
         }
+
+        /* Offers Section */
+        .offers-section {
+            background: #F8FAFC;
+            padding: 5rem 0;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .offer-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, padding 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+
+        .offer-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            transition: font-size 0.3s;
+        }
+
+        .offer-card:hover .offer-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .offer-card h3 {
+            color: #2563EB;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            transition: font-size 0.3s, margin-bottom 0.3s;
+        }
+
+        .offer-card:hover h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .offer-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+
+        .offer-card:hover .offer-details {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .offer-card>p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .offer-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .offer-features li {
+            color: #64748B;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .offer-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2563EB;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .offer-button {
+            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.3s;
+            display: inline-block;
+            margin-top: auto;
+        }
+
+        .offer-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .offer-card {
+                min-height: auto;
+            }
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .partner-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-card a {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .partner-card img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
     </style>
 </head>
 
@@ -927,15 +1100,34 @@
         </div>
     </section>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1><span class="small-text">Abbandona i vecchi schemi.</span>Sperimenta la forza della Sociocrazia.
             </h1>
-            <p class="subtitle">Accompagnamento esperto e consulenza per l'adozione di pratiche sociocratiche nella
-                vostra organizzazione. Trasforma il vostro modo di collaborare, prendere decisioni e liberare il
-                potenziale di ognuno.</p>
-            <a href="#contatto" class="cta-button">Inizia l'Esperimento</a>
+            <p class="subtitle">Accompagnamento esperto e consulenza per l'adozione di pratiche sociocratiche nella tua
+                organizzazione. Trasforma il tuo modo di collaborare, prendere decisioni e liberare il potenziale
+                di ciascuno.</p>
+
+            <a href="#contact" class="cta-button">Qual è la tua sfida?</a>
+
+            <div class="hero-markets">
+                <p class="markets-intro"><strong>Particolarmente efficace per:</strong></p>
+                <div class="market-list">
+                    <div class="market-item">
+                        <span class="market-icon">⚡</span>
+                        <span class="market-text">Agenzie tech & digitali che vogliono sbloccare le decisioni</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-icon">🤝</span>
+                        <span class="market-text">Cooperative e imprese sociali che vogliono combinare democrazia ed
+                            efficienza</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-icon">👨‍👩‍👧‍👦</span>
+                        <span class="market-text">Imprese familiari che preparano la nuova generazione</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1040,55 +1232,31 @@
         </div>
     </section>
 
-    <!-- Method Section -->
-    <section class="method-section" id="metodo">
-        <div class="container">
-            <h2 class="section-title">Il Nostro Metodo</h2>
-            <div class="method-grid">
-                <div class="method-card">
-                    <div class="method-number">1</div>
-                    <h3>Diagnosi</h3>
-                    <p>Iniziamo comprendendo le vostre sfide attuali e concepiamo una roadmap su misura per implementare
-                        le pratiche sociocratiche nel vostro contesto specifico.</p>
-                </div>
-                <div class="method-card">
-                    <div class="method-number">2</div>
-                    <h3>Accompagnamento</h3>
-                    <p>Guida passo dopo passo attraverso il processo di adozione, con facilitazione pratica e coaching
-                        per assicurare transizioni fluide.</p>
-                </div>
-                <div class="method-card">
-                    <div class="method-number">3</div>
-                    <h3>Monitoraggio</h3>
-                    <p>Supporto continuo attraverso punti regolari, formazione avanzata e adattamento basato sui vostri
-                        bisogni in evoluzione e apprendimenti.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section" id="processo">
+    <section class="process-section">
         <div class="container">
             <h2 class="section-title">Come funziona?</h2>
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <h3>Esplorazione</h3>
-                    <p>Tutto inizia dal vostro bisogno di cambiamento e dal coraggio di esplorare modalità di governance
-                        più collaborative e inclusive come la sociocrazia.</p>
+                    <h3>Esplorazione & Diagnosi</h3>
+                    <p>Il tuo bisogno di cambiamento incontra la nostra analisi delle tue sfide attuali. Esploriamo
+                        insieme la tua realtà, le tue risorse e le tue ambizioni.</p>
+                    <p class="step-result"><strong>→ Risultato:</strong> Roadmap su misura per la tua trasformazione</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">2</div>
-                    <h3>Progettazione</h3>
-                    <p>Esploriamo insieme la vostra realtà attuale, le vostre risorse e le vostre ambizioni per
-                        concepire una traiettoria su misura dal punto A al punto B.</p>
+                    <h3>Progettazione & Accompagnamento</h3>
+                    <p>Progettiamo la tua traiettoria dal punto A al punto B e ti guidiamo passo dopo passo con
+                        facilitazione pratica e coaching.</p>
+                    <p class="step-result"><strong>→ Risultato:</strong> Pratiche sociocratiche adattate al tuo contesto
+                        specifico</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
-                    <h3>Implementazione</h3>
-                    <p>Implementiamo piccoli cambiamenti in una dinamica agile, fatta di piccole implementazioni e
-                        apprendimento continuo, scoprendo cosa funziona per voi.</p>
+                    <h3>Implementazione & Monitoraggio</h3>
+                    <p>Implementiamo piccoli cambiamenti in una dinamica agile, con supporto continuo e adattamento
+                        basato sui tuoi apprendimenti.</p>
+                    <p class="step-result"><strong>→ Risultato:</strong> Trasformazione duratura e team autonomi</p>
                 </div>
             </div>
         </div>
@@ -1101,6 +1269,71 @@
                 <h2 class="section-title">Il Nostro Approccio</h2>
                 <p>Il mio ruolo è aiutarvi a scoprire le pratiche adatte ai vostri bisogni, illuminando le sfumature e
                     le conseguenze di ogni scelta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers-section" id="offerte">
+        <div class="container">
+            <h2 class="section-title">Le nostre offerte</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-icon">📚</div>
+                    <h3>Formazione</h3>
+                    <div class="offer-details">
+                        <p>Formazioni pratiche per padroneggiare gli strumenti e le pratiche sociocratiche. Sviluppa le
+                            competenze dei tuoi team per una collaborazione più fluida e decisioni più
+                            inclusive.</p>
+                        <ul class="offer-features">
+                            <li>Workshop interattivi</li>
+                            <li>Pratiche concrete</li>
+                            <li>Formazione certificante</li>
+                            <li>Adattamento al tuo contesto</li>
+                        </ul>
+                    </div>
+                    <a href="training.html" class="offer-button">Scopri le nostre formazioni</a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">🤝</div>
+                    <h3>Consulenza</h3>
+                    <div class="offer-details">
+                        <p>Accompagnamento personalizzato per trasformare la tua organizzazione con la sociocrazia. Ti
+                            guidiamo passo dopo passo nella tua transizione verso una governance più collaborativa
+                            ed efficace.</p>
+                        <ul class="offer-features">
+                            <li>Diagnosi organizzativa</li>
+                            <li>Progettazione su misura</li>
+                            <li>Facilitazione e coaching</li>
+                            <li>Monitoraggio e aggiustamenti</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="offer-button">Inizia la tua trasformazione</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section" id="partenaires">
+        <div class="container">
+            <h2 class="section-title">I nostri partner</h2>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <a href="https://www.sociocracyforall.org" target="_blank" rel="noopener noreferrer">
+                        <img src="images/sofa-logo.webp" alt="Sociocracy for All">
+                    </a>
+                </div>
+                <div class="partner-card">
+                    <a href="https://www.sociocratie-france.fr" target="_blank" rel="noopener noreferrer">
+                        <img src="images/cfs-logo.png" alt="Centre Français de la Sociocratie">
+                    </a>
+                </div>
+                <div class="partner-card">
+                    <a href="https://ecovillaggi.it" target="_blank" rel="noopener noreferrer">
+                        <img src="images/rive-logo.png" alt="RIVE - Rete Italiana Villaggi Ecologici">
+                    </a>
+                </div>
             </div>
         </div>
     </section>

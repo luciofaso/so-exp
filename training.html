@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations - SoExp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-circle-container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid;
+        }
+
+        .nav-circle.large {
+            width: 34px;
+            height: 34px;
+            border-color: #2563EB;
+            top: 3px;
+            left: 3px;
+        }
+
+        .nav-circle.medium {
+            width: 24px;
+            height: 24px;
+            border-color: #FBBF24;
+            top: 8px;
+            left: 13px;
+        }
+
+        .nav-circle.small {
+            width: 17px;
+            height: 17px;
+            border-color: #60A5FA;
+            top: 5px;
+            left: 5px;
+        }
+
+        .nav-logo-text .so {
+            color: #2563EB;
+        }
+
+        .nav-logo-text .exp {
+            color: #FBBF24;
+        }
+
+        .back-button {
+            background: #2563EB;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .back-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #FBBF24 100%);
+            color: white;
+            padding: 100px 2rem 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .formations-section {
+            padding: 5rem 0;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-intro p {
+            font-size: 1.1rem;
+            color: #64748B;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .target-audience {
+            background: #EEF2FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .target-audience strong {
+            color: #2563EB;
+        }
+
+        .formations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .formation-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .formation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .formation-header {
+            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .formation-header.free {
+            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+        }
+
+        .formation-duration {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .formation-type {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .formation-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .formation-price {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-group {
+            margin-bottom: 1rem;
+        }
+
+        .price-label {
+            font-size: 0.85rem;
+            color: #64748B;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #94A3B8;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        .discounted-price {
+            color: #2563EB;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .free-price {
+            color: #10B981;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .formation-date {
+            background: #FEF3C7;
+            color: #92400E;
+            padding: 0.7rem;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .formation-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .formation-details h4 {
+            color: #2563EB;
+            margin-bottom: 0.7rem;
+            font-size: 1rem;
+        }
+
+        .formation-details p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .formation-outcome {
+            background: #F8FAFC;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .formation-outcome strong {
+            color: #2563EB;
+            font-size: 0.9rem;
+        }
+
+        .formation-outcome p {
+            color: #64748B;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+        }
+
+        .formation-button {
+            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.3s;
+            display: block;
+        }
+
+        .formation-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .financial-note {
+            background: #EEF2FF;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 4px solid #2563EB;
+        }
+
+        .financial-note p {
+            color: #64748B;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .financial-note strong {
+            color: #2563EB;
+        }
+
+        /* Footer */
+        footer {
+            background: #1F2937;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .formations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <div class="nav-circle-container">
+                        <div class="nav-circle large"></div>
+                        <div class="nav-circle medium"></div>
+                        <div class="nav-circle small"></div>
+                    </div>
+                </div>
+                <span class="nav-logo-text"><span class="so">So</span><span class="exp">Exp</span></span>
+            </a>
+            <a href="index.html" class="back-button">← Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nos Formations en Sociocratie</h1>
+            <p>Formations pratiques pour maîtriser les outils et pratiques sociocratiques. Développez les compétences
+                de vos équipes pour une collaboration plus fluide et des décisions plus inclusives.</p>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section class="formations-section">
+        <div class="container">
+            <div class="section-intro">
+                <p>Que vous découvriez la sociocratie ou souhaitiez approfondir vos pratiques, nous proposons des
+                    formats adaptés à vos besoins et votre niveau d'engagement.</p>
+                <div class="target-audience">
+                    <p><strong>Public cible :</strong> Nouveaux adoptants, managers, équipes entières souhaitant
+                        transformer leur mode de gouvernance et de collaboration.</p>
+                </div>
+            </div>
+
+            <div class="formations-grid">
+                <!-- Formation 1h -->
+                <div class="formation-card">
+                    <div class="formation-header free">
+                        <div class="formation-duration">1h</div>
+                        <div class="formation-type">Session découverte</div>
+                    </div>
+                    <div class="formation-body">
+                        <div class="formation-price">
+                            <span class="free-price">Gratuit</span>
+                        </div>
+                        <div class="formation-date">
+                            📅 Prochaine session : 20 Novembre 2025
+                        </div>
+                        <div class="formation-details">
+                            <h4>Format</h4>
+                            <p>En ligne via Zoom</p>
+                        </div>
+                        <div class="formation-outcome">
+                            <strong>Ce que vous saurez faire :</strong>
+                            <p>Comprendre si la sociocratie convient à votre organisation et identifier vos premiers pas
+                                possibles.</p>
+                        </div>
+                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1h Gratuit"
+                            class="formation-button">S'inscrire
+                            gratuitement</a>
+                    </div>
+                </div>
+
+                <!-- Formation 4h -->
+                <div class="formation-card">
+                    <div class="formation-header">
+                        <div class="formation-duration">4h</div>
+                        <div class="formation-type">Formation intensive</div>
+                    </div>
+                    <div class="formation-body">
+                        <div class="formation-price">
+                            <div class="price-group">
+                                <div class="price-label">Groupe</div>
+                                <span class="original-price">600€</span>
+                                <span class="discounted-price">350€</span>
+                            </div>
+                            <div class="price-group">
+                                <div class="price-label">Par personne (min. 4)</div>
+                                <span class="discounted-price">100€</span>
+                            </div>
+                        </div>
+                        <div class="formation-details">
+                            <h4>Format</h4>
+                            <p>Présentiel ou en ligne</p>
+                        </div>
+                        <div class="formation-outcome">
+                            <strong>Ce que vous saurez faire :</strong>
+                            <p>Comprendre les bases de la sociocratie et identifier comment l'appliquer dans votre
+                                contexte organisationnel.</p>
+                        </div>
+                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 4h"
+                            class="formation-button">Réserver cette
+                            formation</a>
+                    </div>
+                </div>
+
+                <!-- Formation 1 jour -->
+                <div class="formation-card">
+                    <div class="formation-header">
+                        <div class="formation-duration">1 jour</div>
+                        <div class="formation-type">Formation pratique</div>
+                    </div>
+                    <div class="formation-body">
+                        <div class="formation-price">
+                            <div class="price-group">
+                                <div class="price-label">Groupe</div>
+                                <span class="original-price">1 200€</span>
+                                <span class="discounted-price">700€</span>
+                            </div>
+                            <div class="price-group">
+                                <div class="price-label">Par personne (min. 4)</div>
+                                <span class="discounted-price">200€</span>
+                            </div>
+                        </div>
+                        <div class="formation-details">
+                            <h4>Format</h4>
+                            <p>Présentiel ou en ligne</p>
+                        </div>
+                        <div class="formation-outcome">
+                            <strong>Ce que vous saurez faire :</strong>
+                            <p>Pratiquer les outils essentiels de la sociocratie et démarrer avec vos premières
+                                décisions sociocratiques dans votre organisation.</p>
+                        </div>
+                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1 jour"
+                            class="formation-button">Réserver cette
+                            formation</a>
+                    </div>
+                </div>
+
+                <!-- Formation 2 jours -->
+                <div class="formation-card">
+                    <div class="formation-header">
+                        <div class="formation-duration">2 jours</div>
+                        <div class="formation-type">Formation complète</div>
+                    </div>
+                    <div class="formation-body">
+                        <div class="formation-price">
+                            <div class="price-group">
+                                <div class="price-label">Groupe</div>
+                                <span class="original-price">2 000€</span>
+                                <span class="discounted-price">1 200€</span>
+                            </div>
+                            <div class="price-group">
+                                <div class="price-label">Par personne (min. 4)</div>
+                                <span class="discounted-price">350€</span>
+                            </div>
+                        </div>
+                        <div class="formation-details">
+                            <h4>Format</h4>
+                            <p>Présentiel ou en ligne</p>
+                        </div>
+                        <div class="formation-outcome">
+                            <strong>Ce que vous saurez faire :</strong>
+                            <p>Maîtriser l'ensemble des pratiques sociocratiques et implémenter la sociocratie de
+                                manière autonome dans votre organisation.</p>
+                        </div>
+                        <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 2 jours"
+                            class="formation-button">Réserver cette
+                            formation</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="financial-note">
+                <p><strong>L'argent ne doit pas être un obstacle.</strong><br>
+                    Si le coût de la formation représente une difficulté pour vous ou votre organisation, contactez-nous
+                    pour discuter d'un tarif adapté à votre situation. Nous croyons que la sociocratie doit être
+                    accessible à tous ceux qui souhaitent transformer leur manière de collaborer.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SoExp - The Sociocracy Experiment. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
