@@ -1186,6 +1186,231 @@
                 gap: 2rem;
             }
         }
+
+        /* ABOUT SECTION STYLES - DA COPIARE NEL TUO <style> */
+
+        .about-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        /* Photo Section */
+        .photo-section {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .profile-photo {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            min-height: 400px;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            text-align: center;
+            color: #64748B;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* Content Section */
+        .content-section h2 {
+            color: #2563EB;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h3 {
+            color: #1e293b;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .main-text {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Why Choose Box */
+        .why-choose-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 2px solid #e0e7ff;
+        }
+
+        .why-choose-box h4 {
+            color: #2563EB;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .why-points {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .why-point {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .why-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .why-text h5 {
+            color: #1e293b;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .why-text p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Certifications */
+        .certifications {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin: 3rem 0;
+        }
+
+        .certifications h4 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .cert-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-logo {
+            height: 80px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cert-description {
+            font-size: 0.85rem;
+            color: #64748B;
+            line-height: 1.5;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            background: #10B981;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .cert-badge.pending {
+            background: #F59E0B;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .photo-section {
+                position: relative;
+                top: 0;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .intro-text {
+                font-size: 1.05rem;
+            }
+        }
     </style>
 </head>
 
@@ -1289,7 +1514,8 @@
             <div class="two-columns">
                 <div class="left-column">
                     <h2>Pourquoi la Sociocratie ?</h2>
-                    <p>Beaucoup d'organisations restent figées dans des structures hiérarchiques rigides, qui freinent
+                    <p>Nos manières de travailler ensemble sont souvent obsolètes. Beaucoup d'organisations restent
+                        figées dans des structures hiérarchiques rigides, qui freinent
                         créativité, engagement et initiative. Les personnes se sentent désemparées, les décisions sont
                         lentes, et l'innovation en souffre.</p>
                     <p>La sociocratie, née aux Pays-Bas et utilisée dans le monde entier, est une technologie sociale
@@ -1346,52 +1572,117 @@
         </div>
     </section>
 
-    <!-- Who Am I Section -->
+
+    <!-- ABOUT SECTION - DA COPIARE NEL TUO index.html -->
     <section class="about-section" id="about">
         <div class="container">
-            <div class="two-columns">
-                <div class="left-column">
-                    <h2>Qui suis-je ?</h2>
-                    <h3>Je m'appelle Luciano Raso</h3>
-                    <p><strong>Ma mission :</strong> Je reconnais le besoin et les difficultés d'être et construire
-                        ensemble, et je m'engage pour accompagner les individus et les organisations pour construire un
-                        monde plus démocratique et communautaire à travers la sociocratie.</p>
-                    <p><strong>Mes expériences :</strong> Formé à la sociocratie par Sociocracy for All, j'accompagne
-                        plusieurs organisations vers la gouvernance sociocratique, en France et Italie.</p>
-                    <p><strong>Mon approche :</strong> Mon background de chercheur avec une expertise en analyse des
-                        systèmes complexes me permet d'accompagner les organisations avec une approche structurée et
-                        directe, en éclairant les nuances et conséquences de chaque choix organisationnel.</p>
+            <div class="about-layout">
+                <!-- Photo Section -->
+                <div class="photo-section">
+                    <img src="images/selfie2.png" alt="Luciano Raso" class="profile-photo">
+                    <p class="photo-caption">Luciano Raso<br>Consultant en Sociocratie</p>
                 </div>
-                <div class="right-column">
-                    <div class="approach-highlight">
-                        <h3>Pourquoi choisir SoExp ?</h3>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🔬</div>
-                            <div class="highlight-text">
-                                <h4>Approche Scientifique</h4>
-                                <p>Background de recherche en systèmes complexes appliqué à l'organisation collective
-                                </p>
+
+                <!-- Content Section -->
+                <div class="content-section">
+                    <h2>Qui suis-je ?</h2>
+                    <h3>Plombier de la gouvernance, consultant en sociocratie</h3>
+
+                    <p class="intro-text">
+                        Je m'appelle <strong>Luciano Raso</strong>. J'accompagne les organisations à fonctionner de
+                        manière plus fluide et efficace avec des outils pratiques et éprouvés venant de la sociocratie.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>Mon parcours :</strong> Chercheur en décisions en condition d'incertitude, j'ai étudié
+                        comment les systèmes complexes s'adaptent au changement. Plusieurs années comme data scientist
+                        en entreprise tech, où j'ai appris que les meilleures données ne servent pas à grand chose sans
+                        de bonnes décisions collectives. Mais surtout, j'ai participé et fait grandir plusieurs
+                        organisations avec des systèmes de gouvernance très différents.
+                    </p>
+
+                    <p class="main-text">
+                        Père de deux filles, j'ai vécu en Italie, France, Pays-Bas et Danemark – une diversité qui m'a
+                        appris que chaque culture a sa façon de décider ensemble. Ma posture d'accompagnement se nourrit
+                        aussi de la méditation, des communautés intentionnelles, des cercles de parole et du triathlon :
+                        présence, écoute collective, et détermination.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>Ma conviction :</strong> Chaque organisation a le potentiel de mieux fonctionner.
+                        L'enjeu est d'améliorer et adapter le système de gouvernance à sa réalité spécifique. Pas de
+                        modèle universel, mais une trajectoire sur mesure.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>Mon approche :</strong> Tout commence par votre besoin de changement. Ensemble, nous
+                        explorons comment aller du point A au point B – pas à pas, dans une dynamique agile faite de
+                        petites implémentations et d'apprentissage continu. C'est l'esprit même de <em>SoExp</em> :
+                        expérimenter, ajuster, avancer.
+                    </p>
+
+                    <!-- Why Choose Box -->
+                    <div class="why-choose-box">
+                        <h4>Pourquoi choisir SoExp ?</h4>
+                        <div class="why-points">
+                            <div class="why-point">
+                                <div class="why-icon">🏢</div>
+                                <div class="why-text">
+                                    <h5>Expérience diversifiée</h5>
+                                    <p>6 ans en entreprise tech + expérience dans de nombreuses organisations aux
+                                        gouvernances variées</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🎯</div>
-                            <div class="highlight-text">
-                                <h4>Méthode Structurée</h4>
-                                <p>Accompagnement direct et organisé, adapté aux besoins des entreprises</p>
+                            <div class="why-point">
+                                <div class="why-icon">⚡</div>
+                                <div class="why-text">
+                                    <h5>Agilité & No-nonsense</h5>
+                                    <p>Approche agile par petites itérations. Pas de théorie inutile : on expérimente,
+                                        on apprend, on ajuste</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🌍</div>
-                            <div class="highlight-text">
-                                <h4>Expérience Internationale</h4>
-                                <p>Interventions en France et Italie, adaptation culturelle</p>
+                            <div class="why-point">
+                                <div class="why-icon">🎯</div>
+                                <div class="why-text">
+                                    <h5>Sur-mesure</h5>
+                                    <p>Pas de solution universelle : une trajectoire adaptée à votre réalité, vos
+                                        ressources, vos ambitions</p>
+                                </div>
+                            </div>
+                            <div class="why-point">
+                                <div class="why-icon">🔬</div>
+                                <div class="why-text">
+                                    <h5>Rigueur & Clarté</h5>
+                                    <p>J'éclaire les nuances et conséquences de chaque choix organisationnel avec
+                                        précision</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Certifications -->
+            <div class="certifications">
+                <h4>Certifications et Agréments</h4>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <img src="images/sofa-logo.webp" alt="Sociocracy For All" class="cert-logo">
+                        <div class="cert-name">Sociocracy For All</div>
+                        <div class="cert-description">Organisation internationale de référence en sociocratie</div>
+                        <span class="cert-badge">Facilitateur Certifié</span>
+                    </div>
+                    <div class="cert-item">
+                        <img src="images/cfs-logo.png" alt="Centre Français de la Sociocratie" class="cert-logo">
+                        <div class="cert-name">Centre Français de la Sociocratie</div>
+                        <div class="cert-description">Organisme français de formation et certification</div>
+                        <span class="cert-badge pending">Agrément en cours</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <section class="process-section">
         <div class="container">

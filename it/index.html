@@ -1053,6 +1053,231 @@
                 gap: 2rem;
             }
         }
+
+        /* ABOUT SECTION STYLES - DA COPIARE NEL TUO <style> */
+
+        .about-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        /* Photo Section */
+        .photo-section {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .profile-photo {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            min-height: 400px;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            text-align: center;
+            color: #64748B;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* Content Section */
+        .content-section h2 {
+            color: #2563EB;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h3 {
+            color: #1e293b;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .main-text {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Why Choose Box */
+        .why-choose-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 2px solid #e0e7ff;
+        }
+
+        .why-choose-box h4 {
+            color: #2563EB;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .why-points {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .why-point {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .why-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .why-text h5 {
+            color: #1e293b;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .why-text p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Certifications */
+        .certifications {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin: 3rem 0;
+        }
+
+        .certifications h4 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .cert-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-logo {
+            height: 80px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cert-description {
+            font-size: 0.85rem;
+            color: #64748B;
+            line-height: 1.5;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            background: #10B981;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .cert-badge.pending {
+            background: #F59E0B;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .photo-section {
+                position: relative;
+                top: 0;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .intro-text {
+                font-size: 1.05rem;
+            }
+        }
     </style>
 </head>
 
@@ -1185,47 +1410,111 @@
         </div>
     </section>
 
-    <!-- Who Am I Section -->
+
+    <!-- SEZIONE CHI SONO - DA COPIARE NEL TUO index.html -->
     <section class="about-section" id="about">
         <div class="container">
-            <div class="two-columns">
-                <div class="left-column">
-                    <h2>Chi sono?</h2>
-                    <h3>Mi chiamo Luciano Raso</h3>
-                    <p><strong>La mia missione:</strong> Riconosco il bisogno e le difficoltà di essere e costruire
-                        insieme, e mi impegno ad accompagnare individui e organizzazioni per costruire un mondo più
-                        democratico e comunitario attraverso la sociocrazia.</p>
-                    <p><strong>Le mie esperienze:</strong> Formato alla sociocrazia da Sociocracy for All, accompagno
-                        diverse organizzazioni verso la governance sociocratica, in Francia e Italia.</p>
-                    <p><strong>Il mio approccio:</strong> Il mio background da ricercatore con competenze nell'analisi
-                        dei sistemi complessi mi permette di accompagnare le organizzazioni con un approccio strutturato
-                        e diretto, illuminando le sfumature e conseguenze di ogni scelta organizzativa.</p>
+            <div class="about-layout">
+                <!-- Photo Section -->
+                <div class="photo-section">
+                    <img src="images/selfie2.png" alt="Luciano Raso" class="profile-photo">
+                    <p class="photo-caption">Luciano Raso<br>Consulente in Sociocrazia</p>
                 </div>
-                <div class="right-column">
-                    <div class="approach-highlight">
-                        <h3>Perché scegliere SoExp?</h3>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🔬</div>
-                            <div class="highlight-text">
-                                <h4>Approccio Scientifico</h4>
-                                <p>Background di ricerca in sistemi complessi applicato all'organizzazione collettiva
-                                </p>
+
+                <!-- Content Section -->
+                <div class="content-section">
+                    <h2>Chi sono?</h2>
+                    <h3>L'idraulico della governance, consulente in sociocrazia</h3>
+
+                    <p class="intro-text">
+                        Mi chiamo <strong>Luciano Raso</strong>. Accompagno le organizzazioni a funzionare in modo più
+                        fluido ed efficace con strumenti pratici e collaudati provenienti dalla sociocrazia.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>Il mio percorso:</strong> Ricercatore in decisioni in condizioni di incertezza, ho
+                        studiato come i sistemi complessi si adattano al cambiamento. Diversi anni come data scientist
+                        in azienda tech, dove ho imparato che i migliori dati non servono a molto senza buone decisioni
+                        collettive. Ma soprattutto, ho partecipato e fatto crescere diverse organizzazioni con sistemi
+                        di governance molto differenti.
+                    </p>
+
+                    <p class="main-text">
+                        Padre di due figlie, ho vissuto in Italia, Francia, Paesi Bassi e Danimarca – una diversità che
+                        mi ha insegnato che ogni cultura ha il suo modo di decidere insieme. La mia postura di
+                        accompagnamento si nutre anche della meditazione, delle comunità intenzionali, dei cerchi di
+                        parola e del triathlon: presenza, ascolto collettivo e determinazione.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>La mia convinzione:</strong> Ogni organizzazione ha il potenziale per funzionare meglio.
+                        La sfida è migliorare e adattare il sistema di governance alla propria realtà specifica. Non
+                        esiste un modello universale, ma una traiettoria su misura.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>Il mio approccio:</strong> Tutto inizia dal vostro bisogno di cambiamento. Insieme,
+                        esploriamo come andare dal punto A al punto B – passo dopo passo, in una dinamica agile fatta di
+                        piccole implementazioni e apprendimento continuo. È lo spirito stesso di <em>SoExp</em>:
+                        sperimentare, aggiustare, avanzare.
+                    </p>
+
+                    <!-- Why Choose Box -->
+                    <div class="why-choose-box">
+                        <h4>Perché scegliere SoExp?</h4>
+                        <div class="why-points">
+                            <div class="why-point">
+                                <div class="why-icon">🏢</div>
+                                <div class="why-text">
+                                    <h5>Esperienza diversificata</h5>
+                                    <p>6 anni in azienda tech + esperienza in numerose organizzazioni con governance
+                                        diverse</p>
+                                </div>
+                            </div>
+                            <div class="why-point">
+                                <div class="why-icon">⚡</div>
+                                <div class="why-text">
+                                    <h5>Agilità & No-nonsense</h5>
+                                    <p>Approccio agile per piccole iterazioni. Niente teoria inutile: sperimentiamo,
+                                        impariamo, aggiustiamo</p>
+                                </div>
+                            </div>
+                            <div class="why-point">
+                                <div class="why-icon">🎯</div>
+                                <div class="why-text">
+                                    <h5>Su misura</h5>
+                                    <p>Nessuna soluzione universale: una traiettoria adattata alla vostra realtà,
+                                        risorse e ambizioni</p>
+                                </div>
+                            </div>
+                            <div class="why-point">
+                                <div class="why-icon">🔬</div>
+                                <div class="why-text">
+                                    <h5>Rigore & Chiarezza</h5>
+                                    <p>Illumino le sfumature e le conseguenze di ogni scelta organizzativa con
+                                        precisione</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🎯</div>
-                            <div class="highlight-text">
-                                <h4>Metodo Strutturato</h4>
-                                <p>Accompagnamento diretto e organizzato, adattato ai bisogni delle aziende</p>
-                            </div>
-                        </div>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🌍</div>
-                            <div class="highlight-text">
-                                <h4>Esperienza Internazionale</h4>
-                                <p>Interventi in Francia e Italia, adattamento culturale</p>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications">
+                <h4>Certificazioni e Accreditamenti</h4>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <img src="images/sofa-logo.webp" alt="Sociocracy For All" class="cert-logo">
+                        <div class="cert-name">Sociocracy For All</div>
+                        <div class="cert-description">Organizzazione internazionale di riferimento in sociocrazia</div>
+                        <span class="cert-badge">Facilitatore Certificato</span>
+                    </div>
+                    <div class="cert-item">
+                        <img src="images/cfs-logo.png" alt="Centre Français de la Sociocratie" class="cert-logo">
+                        <div class="cert-name">Centre Français de la Sociocratie</div>
+                        <div class="cert-description">Organismo francese di formazione e certificazione</div>
+                        <span class="cert-badge pending">Accreditamento in corso</span>
                     </div>
                 </div>
             </div>
@@ -1262,16 +1551,6 @@
         </div>
     </section>
 
-    <!-- Approach Section -->
-    <section class="approach-section">
-        <div class="container">
-            <div class="approach-content">
-                <h2 class="section-title">Il Nostro Approccio</h2>
-                <p>Il mio ruolo è aiutarvi a scoprire le pratiche adatte ai vostri bisogni, illuminando le sfumature e
-                    le conseguenze di ogni scelta.</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Offers Section -->
     <section class="offers-section" id="offerte">
