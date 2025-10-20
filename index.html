@@ -1411,6 +1411,187 @@
                 font-size: 1.05rem;
             }
         }
+
+        /* Download Section Styles */
+        .download-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .download-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .download-intro p {
+            font-size: 1.1rem;
+            color: #64748B;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .download-intro .partner-mention {
+            color: #2563EB;
+            font-weight: 600;
+        }
+
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, #EEF2FF 0%, #FEF3C7 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-flag {
+            font-size: 3rem;
+        }
+
+        .download-title {
+            color: #2563EB;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .download-description {
+            color: #64748B;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .download-features {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .download-features h4 {
+            color: #2563EB;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .download-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .download-features li {
+            color: #64748B;
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .download-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2563EB;
+            font-weight: bold;
+        }
+
+        .download-form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #e0e7ff;
+        }
+
+        .download-form-container h4 {
+            color: #2563EB;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Placeholder per ConvertKit form */
+        .form-placeholder {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 5px;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .form-placeholder p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .form-placeholder strong {
+            color: #64748B;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .partner-note {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e7ff;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        .partner-note strong {
+            color: #2563EB;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .download-cards {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .download-card {
+                padding: 2rem;
+            }
+
+            .download-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .download-section {
+                padding: 3rem 0;
+            }
+
+            .download-flag {
+                font-size: 2rem;
+            }
+
+            .download-form-container {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -1449,6 +1630,7 @@
                 <li><a href="#methode">Méthode</a></li>
                 <li><a href="#processus">Processus</a></li>
                 <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#ressources">Ressources</a></li>
             </ul>
             <a href="#contact" class="cta-nav">Démarrer</a>
         </nav>
@@ -1825,6 +2007,62 @@
         </div>
     </section>
 
+
+    <!-- Download Section - FRANÇAIS -->
+    <section class="download-section" id="ressources">
+        <div class="container">
+            <h2 class="section-title">Ressources Gratuites</h2>
+
+            <div class="download-intro">
+                <p>Commencez votre parcours dans la sociocratie en téléchargeant gratuitement le livret d'introduction
+                    réalisé par <span class="partner-mention">Sociocracy for All</span>, partenaire officiel de SoExp.
+                </p>
+                <p>Après le téléchargement, vous recevrez une série d'emails avec du contenu exclusif, des
+                    approfondissements pratiques et des conseils pour appliquer la sociocratie dans votre organisation.
+                </p>
+            </div>
+
+            <div class="download-cards">
+                <!-- Card Français -->
+                <div class="download-card">
+                    <div class="download-header">
+                        <div class="download-flag">🇫🇷</div>
+                        <h3 class="download-title">Intro à la Sociocratie</h3>
+                    </div>
+
+                    <p class="download-description">
+                        Découvrez les principes fondamentaux de la sociocratie et comment ils peuvent transformer la
+                        façon de travailler de votre organisation.
+                    </p>
+
+                    <div class="download-features">
+                        <h4>Dans le livret vous trouverez :</h4>
+                        <ul>
+                            <li>Les principes fondamentaux de la sociocratie</li>
+                            <li>La prise de décision par consentement</li>
+                            <li>Structures organisationnelles circulaires</li>
+                            <li>Exemples pratiques d'application</li>
+                            <li>Premiers pas pour débuter</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card Italien -->
+                <div class="download-form-container">
+                    <script async data-uid="52a0d2787e"
+                        src="https://the-sociocracy-experiment.kit.com/52a0d2787e/index.js"></script>
+                </div>
+
+            </div>
+
+            <div class="partner-note">
+                Livret réalisé par <strong>Sociocracy for All</strong>, partenaire officiel de <strong>SoExp</strong>
+            </div>
+        </div>
+    </section>
+
+
+
     <section class="articles-section" id="articoli">
         <div class="container">
             <h2 class="section-title">Articles</h2>
@@ -1833,6 +2071,9 @@
             </div>
         </div>
     </section>
+
+
+
 
     <script>
         // Funzione per caricare e visualizzare gli articoli da Substack
