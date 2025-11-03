@@ -4,686 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoLab - Sociocracy Laboratory</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Logo Section - NEW */
-        .logo-showcase {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 80px 2rem 60px;
-            text-align: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            flex-direction: column;
-            gap: 0px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 56px;
-            font-weight: bold;
-        }
-
-        .logo-icon {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .circle-container {
-            position: relative;
-            width: 80px;
-            height: 80px;
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            border: 3px solid;
-        }
-
-        .circle.large {
-            width: 65px;
-            height: 65px;
-            border-color: #2563EB;
-            top: 7px;
-            left: 7px;
-        }
-
-        .circle.medium {
-            width: 45px;
-            height: 45px;
-            border-color: #3B82F6;
-            top: 17px;
-            left: 25px;
-            opacity: 0.8;
-        }
-
-        .circle.small {
-            width: 32px;
-            height: 32px;
-            border-color: #FBBF24;
-            top: 10px;
-            left: 10px;
-        }
-
-        .logo-text .so {
-            color: #2563EB;
-        }
-
-        .logo-text .lab {
-            color: #FBBF24;
-        }
-
-        .tagline {
-            font-size: 18px;
-            color: #2563EB;
-            font-style: italic;
-            text-align: left;
-            letter-spacing: 0.5px;
-            font-weight: 400;
-            margin-left: 95px;
-            margin-top: -18px;
-            white-space: nowrap;
-        }
-
-        .tagline .sociocracy {
-            color: #2563EB;
-        }
-
-        .tagline .laboratory {
-            color: #FBBF24;
-        }
-
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 28px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .nav-logo-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .nav-circle-container {
-            position: relative;
-            width: 40px;
-            height: 40px;
-        }
-
-        .nav-circle {
-            position: absolute;
-            border-radius: 50%;
-            border: 2px solid;
-        }
-
-        .nav-circle.large {
-            width: 34px;
-            height: 34px;
-            border-color: #2563EB;
-            top: 3px;
-            left: 3px;
-        }
-
-        .nav-circle.medium {
-            width: 24px;
-            height: 24px;
-            border-color: #FBBF24;
-            top: 8px;
-            left: 13px;
-        }
-
-        .nav-circle.small {
-            width: 17px;
-            height: 17px;
-            border-color: #60A5FA;
-            top: 5px;
-            left: 5px;
-        }
-
-        .nav-logo-text .so {
-            color: #2563EB;
-        }
-
-        .nav-logo-text .lab {
-            color: #FBBF24;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #2563EB;
-        }
-
-        .cta-nav {
-            background: #2563EB;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .cta-nav:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #FBBF24 100%);
-            color: white;
-            padding: 100px 2rem 100px;
-            text-align: center;
-            margin-top: 70px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .hero h1 .small-text {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            font-weight: 400;
-        }
-
-        .cta-button {
-            background: #FBBF24;
-            color: #1F2937;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: #2563EB;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        /* Two Column Section */
-        .two-column-section {
-            background: white;
-        }
-
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .left-column h2 {
-            font-size: 2.2rem;
-            color: #2563EB;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .left-column p {
-            font-size: 1.1rem;
-            color: #64748B;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .right-column {
-            background: linear-gradient(135deg, #EEF2FF 0%, #FEF3C7 100%);
-            padding: 2rem;
-            border-radius: 12px;
-        }
-
-        .principle-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .principle-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .principle-icon {
-            background: #2563EB;
-            color: white;
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-            font-size: 0.9rem;
-        }
-
-        .principle-content h3 {
-            color: #2563EB;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .principle-content p {
-            color: #64748B;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* About Section */
-        .about-section {
-            background: #F8FAFC;
-        }
-
-        .about-section h3 {
-            color: #2563EB;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .approach-highlight {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .approach-highlight h3 {
-            color: #2563EB;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .highlight-point {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight-point:last-child {
-            margin-bottom: 0;
-        }
-
-        .highlight-icon {
-            background: #EEF2FF;
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .highlight-text h4 {
-            color: #2563EB;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            font-size: 1rem;
-        }
-
-        .highlight-text p {
-            color: #64748B;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        /* Method Section */
-        .method-section {
-            background: white;
-        }
-
-        .method-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .method-card {
-            background: #F8FAFC;
-            padding: 2.5rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .method-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .method-number {
-            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
-            color: white;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0 auto 1.5rem;
-        }
-
-        .method-card h3 {
-            color: #2563EB;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .method-card p {
-            color: #64748B;
-            line-height: 1.6;
-        }
-
-        /* Process Section */
-        .process-section {
-            background: #F8FAFC;
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .process-step {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .step-number {
-            background: linear-gradient(135deg, #2563EB 0%, #FBBF24 100%);
-            color: white;
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1.5rem;
-        }
-
-        .process-step h3 {
-            color: #2563EB;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .process-step p {
-            color: #64748B;
-            line-height: 1.6;
-        }
-
-        /* Approach Section */
-        .approach-section {
-            background: white;
-        }
-
-        .approach-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .approach-content p {
-            font-size: 1.1rem;
-            color: #64748B;
-            line-height: 1.7;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background: #F8FAFC;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid #2563EB;
-        }
-
-        .testimonial p {
-            color: #64748B;
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial .quote {
-            font-size: 1.5rem;
-            color: #2563EB;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial .author {
-            color: #2563EB;
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        /* CTA Section */
-        .final-cta {
-            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #FBBF24 100%);
-            color: white;
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .final-cta h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .final-cta p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            background: #1F2937;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .logo {
-                font-size: 40px;
-            }
-
-            .logo-icon {
-                width: 60px;
-                height: 60px;
-            }
-
-            .circle-container {
-                width: 60px;
-                height: 60px;
-            }
-
-            .circle.large {
-                width: 50px;
-                height: 50px;
-                top: 5px;
-                left: 5px;
-            }
-
-            .circle.medium {
-                width: 35px;
-                height: 35px;
-                top: 12px;
-                left: 18px;
-            }
-
-            .circle.small {
-                width: 25px;
-                height: 25px;
-                top: 8px;
-                left: 8px;
-            }
-
-            .tagline {
-                font-size: 16px;
-                margin-left: 75px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero h1 .small-text {
-                font-size: 1.5rem;
-            }
-
-            .two-columns {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .method-grid,
-            .process-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>The Sociocracy Experiment - Sociocracy Consulting</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- MailerLite Universal -->
+    <script>
+        (function (w, d, e, u, f, l, n) {
+            w[f] = w[f] || function () {
+                (w[f].q = w[f].q || [])
+                    .push(arguments);
+            }, l = d.createElement(e), l.async = 1, l.src = u,
+                n = d.getElementsByTagName(e)[0], n.parentNode.insertBefore(l, n);
+        })
+            (window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
+        ml('account', '1868411');
+    </script>
+    <!-- End MailerLite Universal -->
 </head>
 
 <body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <a href="../index.html" class="lang-option">
+            <span class="flag fr"></span>
+            <span>FR</span>
+        </a>
+        <a href="../it/index.html" class="lang-option">
+            <span class="flag it"></span>
+            <span>IT</span>
+        </a>
+        <a href="index.html" class="lang-option active">
+            <span class="flag en"></span>
+            <span>EN</span>
+        </a>
+    </div>
+
     <!-- Header -->
     <header>
         <nav>
@@ -695,16 +50,23 @@
                         <div class="nav-circle small"></div>
                     </div>
                 </div>
-                <span class="nav-logo-text"><span class="so">So</span><span class="lab">Lab</span></span>
+                <div class="nav-logo-text">
+                    <div class="nav-first-line">
+                        <span class="nav-the">The</span>
+                        <span class="nav-sociocracy">Sociocracy</span>
+                    </div>
+                    <div class="nav-experiment">Experiment</div>
+                </div>
             </a>
             <ul class="nav-links">
                 <li><a href="#sociocracy">Sociocracy</a></li>
-                <li><a href="#about">About me</a></li>
-                <li><a href="#method">Method</a></li>
-                <li><a href="#process">Process</a></li>
+                <li><a href="#first-steps">First Steps</a></li>
+                <li><a href="#about">About Me</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#trainings">Trainings</a></li>
+                <li><a href="#consulting">Consulting</a></li>
+                <li><a href="#contact" style="color: #2563EB; font-weight: 700;">Book a Call</a></li>
             </ul>
-            <a href="#contact" class="cta-nav">Get Started</a>
         </nav>
     </header>
 
@@ -719,9 +81,13 @@
                         <div class="circle small"></div>
                     </div>
                 </div>
-                <span class="logo-text"><span class="so">So</span><span class="lab">Lab</span></span>
-            </div>
-            <div class="tagline"><span class="sociocracy">sociocracy</span> <span class="laboratory">laboratory</span>
+                <div class="logo-text">
+                    <div class="first-line">
+                        <span class="the">The</span>
+                        <span class="sociocracy">Sociocracy</span>
+                    </div>
+                    <div class="experiment">Experiment</div>
+                </div>
             </div>
         </div>
     </section>
@@ -729,42 +95,61 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1><span class="small-text">Drop the old patterns.</span>Experience the power of Sociocracy.
-            </h1>
-            <p class="subtitle">Expert guidance and consulting for adopting sociocratic practices in your
-                organization. Transform how you collaborate, make decisions, and unleash everyone's potential.</p>
-            <a href="#contact" class="cta-button">Start the Experiment</a>
+            <h1><span class="small-text">Abandon old patterns.</span>Experience the Power of Sociocracy.</h1>
+            <p class="subtitle">Expert guidance and consulting for adopting sociocratic practices in your organization.
+                Transform how you collaborate, make decisions, and unlock everyone's potential.</p>
+
+            <a href="#first-steps" class="cta-button">Discover how to start ↓</a>
+
+            <div class="hero-markets">
+                <p class="markets-intro"><strong>Particularly effective for:</strong></p>
+                <div class="market-list">
+                    <div class="market-item">
+                        <span class="market-icon">⚡</span>
+                        <span class="market-text">Tech & digital agencies wanting to unblock decision-making</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-icon">🤝</span>
+                        <span class="market-text">Cooperatives and social enterprises combining democracy with
+                            efficiency</span>
+                    </div>
+                    <div class="market-item">
+                        <span class="market-icon">👨‍👩‍👧‍👦</span>
+                        <span class="market-text">Family businesses preparing the next generation</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Two Column Section - Why Sociocracy -->
+    <!-- Why Sociocracy -->
     <section class="two-column-section" id="sociocracy">
         <div class="container">
             <div class="two-columns">
                 <div class="left-column">
                     <h2>Why Sociocracy?</h2>
-                    <p>Many organizations remain stuck in rigid hierarchical structures that inhibit creativity,
-                        engagement, and initiative. People feel disempowered, decisions are slow, and innovation
-                        suffers.</p>
-                    <p>Sociocracy, born in the Netherlands and used worldwide, is a social technology that offers proven
-                        practices for more effective and inclusive collaboration: shared power, listening to everyone.
+                    <p>Our ways of working together are often outdated. Many organizations remain stuck in rigid
+                        hierarchical structures that stifle creativity, engagement, and initiative. People feel lost,
+                        decisions are slow, and innovation suffers.</p>
+                    <p>Sociocracy, born in the Netherlands and used worldwide, is a social technology offering proven
+                        practices for more effective and inclusive collaboration: shared power, everyone's voice heard.
                     </p>
                     <p>With Sociocracy 3.0, the modern and agile version, we help organizations unlock everyone's
-                        potential, to innovate together and adapt quickly to change.</p>
+                        potential to innovate together and adapt quickly to change.</p>
                 </div>
                 <div class="right-column">
                     <div class="principle-item">
                         <div class="principle-icon">⚡</div>
                         <div class="principle-content">
-                            <h3>Self-organizing teams</h3>
-                            <p>Self-organizing teams with a clear purpose and the authority to make decisions in their
+                            <h3>Self-organizing Teams</h3>
+                            <p>Self-organizing teams with clear objectives and authority to make decisions in their
                                 domain.</p>
                         </div>
                     </div>
                     <div class="principle-item">
                         <div class="principle-icon">🔗</div>
                         <div class="principle-content">
-                            <h3>Bidirectional connection</h3>
+                            <h3>Bidirectional Connection</h3>
                             <p>Bidirectional connection between circles ensuring information flows throughout the
                                 organization.</p>
                         </div>
@@ -772,7 +157,7 @@
                     <div class="principle-item">
                         <div class="principle-icon">✅</div>
                         <div class="principle-content">
-                            <h3>Consent decision making</h3>
+                            <h3>Consent-based Decisions</h3>
                             <p>Decisions move forward when there are no reasoned objections, ensuring everyone's voice
                                 counts.</p>
                         </div>
@@ -780,8 +165,17 @@
                     <div class="principle-item">
                         <div class="principle-icon">👥</div>
                         <div class="principle-content">
-                            <h3>Transparent selection</h3>
-                            <p>Transparent process for selecting people for roles based on competence and fit.</p>
+                            <h3>Transparent Selection</h3>
+                            <p>Transparent process for selecting people for roles based on competence and suitability.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">🔄</div>
+                        <div class="principle-content">
+                            <h3>Continuous Feedback</h3>
+                            <p>Iterative feedback process to improve roles and responsibilities within the organization.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -789,137 +183,483 @@
         </div>
     </section>
 
-    <!-- Who Am I Section -->
+    <!-- First Steps Section -->
+    <section class="premiers-pas-section" id="first-steps">
+        <div class="container">
+            <div class="premiers-pas-intro">
+                <h2>🚀 First Steps</h2>
+                <p>Begin your sociocracy journey. Choose your entry point: download the free booklet or book a 1-hour
+                    discovery session.</p>
+            </div>
+
+            <div class="premiers-pas-grid">
+                <!-- Free Booklet -->
+                <div class="premiers-pas-card">
+                    <div class="premiers-pas-header">
+                        <div class="premiers-pas-icon">📘</div>
+                        <h3 class="premiers-pas-title">Free Booklet</h3>
+                    </div>
+
+                    <p class="premiers-pas-description">
+                        Discover the fundamental principles of sociocracy and how they can transform your organization's
+                        way of working.
+                    </p>
+
+                    <div class="premiers-pas-features">
+                        <ul>
+                            <li>Available in French 🇫🇷 and Italian 🇮🇹</li>
+                            <li>Fundamental principles of sociocracy</li>
+                            <li>Consent-based decision making</li>
+                            <li>Circular organizational structures</li>
+                            <li>Practical application examples</li>
+                        </ul>
+                    </div>
+
+                    <div class="premiers-pas-form">
+                        <div class="ml-embedded" data-form="Kch3uh"></div>
+                    </div>
+                    <div class="premiers-pas-note">
+                        <strong>After downloading the booklet</strong>, you'll receive a series of emails with exclusive
+                        content, practical insights, and invitations for the free 1-hour session and our newsletter.
+                    </div>
+                </div>
+
+                <!-- Free 1h Course -->
+                <div class="premiers-pas-card">
+                    <div class="premiers-pas-header">
+                        <div class="premiers-pas-icon">🎓</div>
+                        <h3 class="premiers-pas-title">Free 1h Course</h3>
+                    </div>
+
+                    <p class="premiers-pas-description">
+                        Online discovery session to understand if sociocracy suits your organization and identify your
+                        possible first steps.
+                    </p>
+
+                    <div class="premiers-pas-features">
+                        <ul>
+                            <li>Online session via Zoom</li>
+                            <li>Personalized introduction to sociocracy</li>
+                            <li>Diagnosis of your specific needs</li>
+                            <li>Live Q&A</li>
+                            <li>Recommendations for your first steps</li>
+                        </ul>
+                    </div>
+
+                    <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1h Gratuit&body=Bonjour Luciano,%0A%0AJe suis intéressé(e) par la session découverte gratuite de 1h sur la sociocratie.%0A%0ANom et Prénom : %0AOrganisation : %0ATéléphone : %0ADate souhaitée : %0A(Voir dates disponibles: https://www.so-exp.org/index.html#calendar)%0A%0ACordialement"
+                        class="cta-button">Book your free session</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
     <section class="about-section" id="about">
         <div class="container">
-            <div class="two-columns">
-                <div class="left-column">
-                    <h2>Who am I?</h2>
-                    <h3>My name is Luciano Raso</h3>
-                    <p><strong>My mission:</strong> I recognize the need and difficulties of being and building
-                        together, and I'm committed to accompanying individuals and organizations to build a more
-                        democratic and community-oriented world through sociocracy.</p>
-                    <p><strong>My experience:</strong> Trained in sociocracy by Sociocracy for All, I accompany several
-                        organizations towards sociocratic governance, in France and Italy.</p>
-                    <p><strong>My approach:</strong> My research background with expertise in complex systems analysis
-                        allows me to accompany organizations with a structured and direct approach, illuminating the
-                        nuances and consequences of each organizational choice.</p>
+            <div class="about-layout">
+                <div class="photo-section">
+                    <img src="../images/selfie2.png" alt="Luciano Raso" class="profile-photo">
+                    <p class="photo-caption">Luciano Raso<br>Sociocracy Consultant</p>
                 </div>
-                <div class="right-column">
-                    <div class="approach-highlight">
-                        <h3>Why choose SoLab?</h3>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🔬</div>
-                            <div class="highlight-text">
-                                <h4>Scientific Approach</h4>
-                                <p>Research background in complex systems applied to collective organization</p>
+
+                <div class="content-section">
+                    <h2>Who am I?</h2>
+                    <h3>Governance plumber, sociocracy consultant</h3>
+
+                    <p class="intro-text">
+                        My name is <strong>Luciano Raso</strong>. I help organizations function more smoothly and
+                        effectively with practical, proven tools from sociocracy.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>My background:</strong> Researcher in decision-making under uncertainty, I studied how
+                        complex systems adapt to change. Several years as a data scientist in tech companies, where I
+                        learned that the best data means little without good collective decisions. But above all, I've
+                        participated in and grown several organizations with very different governance systems.
+                    </p>
+
+                    <p class="main-text">
+                        Father of two daughters, I've lived in Italy, France, the Netherlands, and Denmark – diversity
+                        that taught me every culture has its way of deciding together. My facilitation approach is also
+                        nourished by meditation, intentional communities, talking circles, and triathlon: presence,
+                        collective listening, and determination.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>My conviction:</strong> Every organization has the potential to function better. The
+                        challenge is to improve and adapt the governance system to its specific reality. No universal
+                        model, but a customized trajectory.
+                    </p>
+
+                    <p class="main-text">
+                        <strong>My approach:</strong> Everything starts with your need for change. Together, we explore
+                        how to go from point A to point B – step by step, in an agile dynamic of small implementations
+                        and continuous learning. That's the very spirit of <em>The Sociocracy Experiment</em>:
+                        experiment, adjust, advance.
+                    </p>
+
+                    <div class="why-choose-box">
+                        <h4>Why choose The Sociocracy Experiment?</h4>
+                        <div class="why-points">
+                            <div class="why-point">
+                                <div class="why-icon">🏢</div>
+                                <div class="why-text">
+                                    <h5>Diverse Experience</h5>
+                                    <p>6 years in tech companies + experience in numerous organizations with varied
+                                        governance</p>
+                                </div>
+                            </div>
+                            <div class="why-point">
+                                <div class="why-icon">⚡</div>
+                                <div class="why-text">
+                                    <h5>Agility & No-nonsense</h5>
+                                    <p>Agile approach through small iterations. No useless theory: we experiment, learn,
+                                        adjust</p>
+                                </div>
+                            </div>
+                            <div class="why-point">
+                                <div class="why-icon">🎯</div>
+                                <div class="why-text">
+                                    <h5>Tailored</h5>
+                                    <p>No universal solution: a trajectory adapted to your reality, resources, and
+                                        ambitions</p>
+                                </div>
+                            </div>
+                            <div class="why-point">
+                                <div class="why-icon">🔬</div>
+                                <div class="why-text">
+                                    <h5>Rigor & Clarity</h5>
+                                    <p>I illuminate the nuances and consequences of each organizational choice with
+                                        precision</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🎯</div>
-                            <div class="highlight-text">
-                                <h4>Structured Method</h4>
-                                <p>Direct and organized guidance, adapted to business needs</p>
-                            </div>
-                        </div>
-                        <div class="highlight-point">
-                            <div class="highlight-icon">🌍</div>
-                            <div class="highlight-text">
-                                <h4>International Experience</h4>
-                                <p>Interventions in France and Italy, cultural adaptation</p>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications & Partners Combined -->
+            <div class="certifications-partners">
+                <h4>Certifications & Partners</h4>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <img src="../images/sofa-logo.webp" alt="Sociocracy for All" class="cert-logo">
+                        <div class="cert-name">Sociocracy For All</div>
+                        <div class="cert-description">Leading international organization in sociocracy</div>
+                        <span class="cert-badge">Certified Facilitator</span>
+                    </div>
+                    <div class="cert-item">
+                        <img src="../images/cfs-logo.png" alt="Centre Français de la Sociocratie" class="cert-logo">
+                        <div class="cert-name">Centre Français de la Sociocratie</div>
+                        <div class="cert-description">French training and certification body</div>
+                        <span class="cert-badge pending">Accreditation in Progress</span>
+                    </div>
+                    <div class="cert-item">
+                        <img src="../images/rive-logo.png" alt="RIVE - Italian Ecovillage Network" class="cert-logo">
+                        <div class="cert-name">RIVE</div>
+                        <div class="cert-description">Italian Ecovillage Network</div>
+                        <span class="cert-badge">Partner</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Method Section -->
-    <section class="method-section" id="method">
-        <div class="container">
-            <h2 class="section-title">Our Method</h2>
-            <div class="method-grid">
-                <div class="method-card">
-                    <div class="method-number">1</div>
-                    <h3>Diagnosis</h3>
-                    <p>We start by understanding your current challenges and design a tailored roadmap for implementing
-                        sociocratic practices in your specific context.</p>
-                </div>
-                <div class="method-card">
-                    <div class="method-number">2</div>
-                    <h3>Guidance</h3>
-                    <p>Step-by-step guidance through the adoption process, with hands-on facilitation and coaching to
-                        ensure smooth transitions.</p>
-                </div>
-                <div class="method-card">
-                    <div class="method-number">3</div>
-                    <h3>Follow-up</h3>
-                    <p>Ongoing support through regular check-ins, advanced training, and adaptation based on your
-                        evolving needs and learnings.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section" id="process">
-        <div class="container">
-            <h2 class="section-title">How does it work?</h2>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Exploration</h3>
-                    <p>It all starts with your need for change and the courage to explore more collaborative and
-                        inclusive governance modes like sociocracy.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Design</h3>
-                    <p>We explore your current reality, resources, and ambitions together to design a tailored
-                        trajectory from point A to point B.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Implementation</h3>
-                    <p>We implement small changes in an agile dynamic, made of small implementations and continuous
-                        learning, discovering what works for you.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Approach Section -->
-    <section class="approach-section">
-        <div class="container">
-            <div class="approach-content">
-                <h2 class="section-title">Our Approach</h2>
-                <p>My role is to help you discover practices adapted to your needs, illuminating the nuances and
-                    consequences of each choice.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
+    <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <h2 class="section-title">What our clients say</h2>
+            <h2 class="section-title">Testimonials</h2>
             <div class="testimonials-grid">
                 <div class="testimonial">
                     <div class="quote">"</div>
-                    <p>The facilitator was very clear, conscientious and enthusiastic in his way of introducing
-                        sociocracy within our young organization. He managed to introduce it into an already existing
-                        group, minimizing resistance, moving step by step, and always explaining concepts with
-                        precision.</p>
+                    <p>The facilitator was very clear, conscientious, and enthusiastic in his way of introducing
+                        sociocracy within our young organization. He succeeded in introducing it into an existing group,
+                        minimizing resistance, advancing step by step, and always explaining concepts with precision.
+                    </p>
                     <div class="author">— Federico Felici, Mankind Project Italia</div>
                 </div>
                 <div class="testimonial">
                     <div class="quote">"</div>
-                    <p>He was able to adapt finely to our culture and our rhythm. Thanks to his progressive approach
-                        and his listening, sociocracy integrated naturally into our way of functioning. His discreet but
-                        structuring presence facilitated concrete and lasting changes.</p>
+                    <p>He adapted finely to our culture and rhythm. Thanks to his progressive approach and listening,
+                        sociocracy integrated naturally into our way of functioning. His discreet yet structuring
+                        presence facilitated concrete and lasting changes.</p>
                     <div class="author">— Damiano Furlan, Uomini Consapevoli</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainings Section -->
+    <section class="formations-section" id="trainings">
+        <div class="container">
+            <h2 class="section-title">Our Trainings</h2>
+
+            <div class="formations-intro">
+                <p>Practical trainings to master sociocratic tools and practices. Develop your teams' skills for
+                    smoother collaboration and more inclusive decisions.</p>
+                <p><strong>Target audience:</strong> New adopters, managers, entire teams wanting to transform their
+                    governance and collaboration methods.</p>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="formations-grid" id="carousel">
+                        <!-- Free 1h Training -->
+                        <div class="formation-card">
+                            <div class="formation-header free">
+                                <div class="formation-duration">1h</div>
+                                <div class="formation-type">Discovery Session</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <span class="free-price">Free</span>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>Online via Zoom</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>What you'll be able to do:</strong>
+                                    <p>Understand if sociocracy suits your organization and identify your possible first
+                                        steps.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1h Gratuit&body=Bonjour Luciano,%0A%0AJe suis intéressé(e) par la session découverte gratuite de 1h sur la sociocratie.%0A%0ANom et Prénom : %0AOrganisation : %0ATéléphone : %0ADate souhaitée : %0A%0ACordialement"
+                                    class="formation-button">Register for free</a>
+                            </div>
+                        </div>
+
+                        <!-- 4h Training -->
+                        <div class="formation-card">
+                            <div class="formation-header">
+                                <div class="formation-duration">4h</div>
+                                <div class="formation-type">Intensive Training</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <div class="price-group">
+                                        <div class="price-label">Group</div>
+                                        <span class="original-price">600€</span>
+                                        <span class="discounted-price">350€</span>
+                                    </div>
+                                    <div class="price-group">
+                                        <div class="price-label">Per person (min. 4)</div>
+                                        <div class="price-row">
+                                            <div class="price-category">
+                                                <span class="price-category-label">Company</span>
+                                                <span class="price-value">100€</span>
+                                            </div>
+                                            <span class="price-separator">|</span>
+                                            <div class="price-category">
+                                                <span class="price-category-label">Individuals</span>
+                                                <span class="price-value">50€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>In-person or online</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>What you'll be able to do:</strong>
+                                    <p>Understand sociocracy basics and identify how to apply them in your
+                                        organizational
+                                        context.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 4h&body=Bonjour Luciano,%0A%0AJe suis intéressé(e) par la formation intensive de 4h sur la sociocratie.%0A%0ANom et Prénom : %0AOrganisation : %0ATéléphone : %0ADate souhaitée : %0AType : [ ] Groupe [ ] Par personne%0A%0ACordialement"
+                                    class="formation-button">Book this training</a>
+                            </div>
+                        </div>
+
+                        <!-- 1-day Training -->
+                        <div class="formation-card">
+                            <div class="formation-header">
+                                <div class="formation-duration">1 day</div>
+                                <div class="formation-type">Practical Training</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <div class="price-group">
+                                        <div class="price-label">Group</div>
+                                        <span class="original-price">1,200€</span>
+                                        <span class="discounted-price">700€</span>
+                                    </div>
+                                    <div class="price-group">
+                                        <div class="price-label">Per person (min. 4)</div>
+                                        <div class="price-row">
+                                            <div class="price-category">
+                                                <span class="price-category-label">Company</span>
+                                                <span class="price-value">200€</span>
+                                            </div>
+                                            <span class="price-separator">|</span>
+                                            <div class="price-category">
+                                                <span class="price-category-label">Individuals</span>
+                                                <span class="price-value">100€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>In-person or online</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>What you'll be able to do:</strong>
+                                    <p>Practice essential sociocracy tools and start with your first sociocratic
+                                        decisions in your organization.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 1 jour&body=Bonjour Luciano,%0A%0AJe suis intéressé(e) par la formation pratique de 1 jour sur la sociocratie.%0A%0ANom et Prénom : %0AOrganisation : %0ATéléphone : %0ADate souhaitée : %0AType : [ ] Groupe [ ] Par personne%0A%0ACordialement"
+                                    class="formation-button">Book this training</a>
+                            </div>
+                        </div>
+
+                        <!-- 2-day Training -->
+                        <div class="formation-card">
+                            <div class="formation-header">
+                                <div class="formation-duration">2 days</div>
+                                <div class="formation-type">Complete Training</div>
+                            </div>
+                            <div class="formation-body">
+                                <div class="formation-price">
+                                    <div class="price-group">
+                                        <div class="price-label">Group</div>
+                                        <span class="original-price">2,000€</span>
+                                        <span class="discounted-price">1,200€</span>
+                                    </div>
+                                    <div class="price-group">
+                                        <div class="price-label">Per person (min. 4)</div>
+                                        <div class="price-row">
+                                            <div class="price-category">
+                                                <span class="price-category-label">Company</span>
+                                                <span class="price-value">350€</span>
+                                            </div>
+                                            <span class="price-separator">|</span>
+                                            <div class="price-category">
+                                                <span class="price-category-label">Individuals</span>
+                                                <span class="price-value">175€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formation-details">
+                                    <h4>Format</h4>
+                                    <p>In-person or online</p>
+                                </div>
+                                <div class="formation-outcome">
+                                    <strong>What you'll be able to do:</strong>
+                                    <p>Master all sociocratic practices and implement sociocracy autonomously in your
+                                        organization.</p>
+                                </div>
+                                <a href="mailto:luciofaso@gmail.com?subject=Réservation Formation Sociocratie - 2 jours&body=Bonjour Luciano,%0A%0AJe suis intéressé(e) par la formation complète de 2 jours sur la sociocratie.%0A%0ANom et Prénom : %0AOrganisation : %0ATéléphone : %0ADate souhaitée : %0AType : [ ] Groupe [ ] Par personne%0A%0ACordialement"
+                                    class="formation-button">Book this training</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)">‹</button>
+                        <div class="carousel-dots" id="dots"></div>
+                        <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)">›</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="calendar-section" id="calendar">
+                <h3>📅 Upcoming Sessions</h3>
+                <p>View all our scheduled sessions and register directly.</p>
+                <div class="calendar-container">
+                    <iframe
+                        src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FParis&showTitle=0&showNav=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&src=ebef58b742012f0561103bee7b53df0006ddb594aa7e9cd43f2012a0175c80df@group.calendar.google.com"
+                        style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div class="financial-note">
+                <p><strong>Money should not be a barrier.</strong><br>
+                    If the training cost represents a difficulty for you or your organization, contact us to discuss a
+                    rate adapted to your situation. We believe sociocracy should be accessible to all who want to
+                    transform their way of collaborating.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consulting & Support Section -->
+    <section class="conseil-section" id="consulting">
+        <div class="container">
+            <div class="conseil-intro">
+                <h2>Consulting & Support</h2>
+                <p>Personalized support to transform your organization with sociocracy. We guide you step by step in
+                    your transition toward more collaborative and effective governance.</p>
+                <p><strong>Our approach is flexible and progressive</strong>, combining sociocracy and agile principles.
+                    We introduce practices gradually to build trust and experience.</p>
+            </div>
+
+            <div class="conseil-content">
+                <!-- How it works -->
+                <div class="conseil-box">
+                    <h3>How does it work?</h3>
+                    <div class="conseil-steps">
+                        <div class="conseil-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Exploration & Diagnosis</h4>
+                                <p>Your need for change meets our analysis of your current challenges. We explore your
+                                    reality, resources, and ambitions together.</p>
+                                <p class="step-result">→ Customized roadmap for your transformation</p>
+                            </div>
+                        </div>
+                        <div class="conseil-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Design & Support</h4>
+                                <p>We design your trajectory from point A to point B and guide you step by step with
+                                    practical facilitation and coaching.</p>
+                                <p class="step-result">→ Sociocratic practices adapted to your context</p>
+                            </div>
+                        </div>
+                        <div class="conseil-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Implementation & Monitoring</h4>
+                                <p>We implement small changes in an agile dynamic, with continuous support and
+                                    adaptation
+                                    based on your learnings.</p>
+                                <p class="step-result">→ Lasting transformation and autonomous teams</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our approach -->
+                <div class="conseil-box">
+                    <h3>Our Approach</h3>
+                    <ul class="conseil-approach">
+                        <li>Personalized organizational diagnosis</li>
+                        <li>Custom design of your trajectory</li>
+                        <li>Team facilitation and coaching</li>
+                        <li>Progressive implementation through small iterations</li>
+                        <li>Continuous monitoring and adjustments</li>
+                        <li>Integrated team training</li>
+                        <li>Support until autonomy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="conseil-cta">
+                <h3>Ready to transform your organization?</h3>
+                <p>Book a free 30-minute discovery call to explore how we can help you.</p>
+                <a href="https://calendar.app.google/hSVtyEpByKfQ9cfDA" class="cta-button">Book your discovery call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section" id="articles">
+        <div class="container">
+            <h2 class="section-title">From the Lab: Articles & Reflections</h2>
+            <div id="articles-container">
+                <div class="loading-message">Loading articles...</div>
             </div>
         </div>
     </section>
@@ -927,8 +667,9 @@
     <!-- Final CTA -->
     <section class="final-cta" id="contact">
         <div class="container">
-            <h2>Ready to experiment?</h2>
-            <p>Book a free 30-minute discovery call to explore how we can help you move faster and more effectively
+            <h2>Let's take a selfie!</h2>
+            <h3>Want to know more?</h3>
+            <p>Book a free 30-minute discovery call to explore how we can help you advance more quickly and effectively
                 toward your goals.</p>
             <a href="https://calendar.app.google/hSVtyEpByKfQ9cfDA" class="cta-button">Book your discovery call</a>
         </div>
@@ -937,9 +678,12 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 SoLab - Sociocracy Laboratory. All rights reserved.</p>
+            <p>&copy; 2025 The Sociocracy Experiment. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="../scripts.js"></script>
 </body>
 
 </html>
