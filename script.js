@@ -107,28 +107,50 @@ document.getElementById('nextBtn').onclick = () => {
     resetAutoScroll();
 };
 
-// Articles loading from Substack
-async function loadSubstackArticles() {
-    const container = document.getElementById('articles-container');
-    const feedUrl = 'https://sociocracyexperiment-fr.substack.com/feed';
+// ========================================
+// SUBSTACK ARTICLES LOADER (Multilingua)
+// ========================================
+
+async function loadSubstackArticles(feedUrl, containerId, locale) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
     try {
         const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
         const data = await response.json();
 
         if (data.status !== 'ok') {
-            throw new Error('Erreur nel caricamento del feed');
+            throw new Error('Errore nel caricamento del feed');
         }
 
         const articles = data.items.slice(0, 6);
 
+        const translations = {
+            'fr': {
+                readMore: 'Lire l\'article',
+                errorMessage: 'Impossible de charger les articles.',
+                visitBlog: 'Visitez le blog'
+            },
+            'it': {
+                readMore: 'Leggi l\'articolo',
+                errorMessage: 'Non è stato possibile caricare gli articoli.',
+                visitBlog: 'Visita il blog'
+            },
+            'en': {
+                readMore: 'Read article',
+                errorMessage: 'Unable to load articles.',
+                visitBlog: 'Visit blog'
+            }
+        };
+
+        const t = translations[locale] || translations['en'];
+
         const articlesHTML = articles.map(article => {
             const date = new Date(article.pubDate);
-            const formattedDate = date.toLocaleDateString('fr-FR', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
+            const formattedDate = date.toLocaleDateString(
+                locale === 'fr' ? 'fr-FR' : locale === 'it' ? 'it-IT' : 'en-GB',
+                { day: 'numeric', month: 'long', year: 'numeric' }
+            );
 
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = article.description;
@@ -142,7 +164,7 @@ async function loadSubstackArticles() {
                         <h3 class="article-title">${article.title}</h3>
                         <p class="article-excerpt">${excerpt}</p>
                         <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="article-link">
-                            Lire l'article
+                            ${t.readMore}
                         </a>
                     </div>
                 </div>
@@ -152,16 +174,47 @@ async function loadSubstackArticles() {
         container.innerHTML = `<div class="articles-grid">${articlesHTML}</div>`;
 
     } catch (error) {
-        console.error('Erreur nel caricamento degli articoli:', error);
+        console.error('Errore nel caricamento degli articoli:', error);
+        const blogUrl = feedUrl.replace('/feed', '');
+        const t = translations[locale] || translations['en'];
+
         container.innerHTML = `
             <div class="error-message">
-                Impossible de charger les articles. 
-                <a href="https://sociocracyexperimentfrance.substack.com" target="_blank" style="color: #2563EB; font-weight: 600;">
-                    Visitez le blog
+                ${t.errorMessage}
+                <a href="${blogUrl}" target="_blank" style="color: #2563EB; font-weight: 600;">
+                    ${t.visitBlog}
                 </a>
             </div>
         `;
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadSubstackArticles);
+// Carica articoli per tutte le lingue
+document.addEventListener('DOMContentLoaded', function () {
+    // Francese
+    if (document.getElementById('articles-container-fr')) {
+        loadSubstackArticles(
+            'https://sociocracyexperimentfrance.substack.com/feed',
+            'articles-container-fr',
+            'fr'
+        );
+    }
+
+    // Italiano
+    if (document.getElementById('articles-container-it')) {
+        loadSubstackArticles(
+            'https://sociocracyexperiment.substack.com/feed',
+            'articles-container-it',
+            'it'
+        );
+    }
+
+    // Inglese (usa feed francese)
+    if (document.getElementById('articles-container-en')) {
+        loadSubstackArticles(
+            'https://sociocracyexperimentfrance.substack.com/feed',
+            'articles-container-en',
+            'en'
+        );
+    }
+});
