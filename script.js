@@ -107,13 +107,14 @@ document.getElementById('nextBtn').onclick = () => {
     resetAutoScroll();
 };
 
+
 // ========================================
 // SUBSTACK ARTICLES LOADER (Multilingua)
 // ========================================
 
 async function loadSubstackArticles(feedUrl, containerId, locale) {
     const container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container) return; // Se non trova il container, esce
 
     try {
         const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
@@ -126,21 +127,9 @@ async function loadSubstackArticles(feedUrl, containerId, locale) {
         const articles = data.items.slice(0, 6);
 
         const translations = {
-            'fr': {
-                readMore: 'Lire l\'article',
-                errorMessage: 'Impossible de charger les articles.',
-                visitBlog: 'Visitez le blog'
-            },
-            'it': {
-                readMore: 'Leggi l\'articolo',
-                errorMessage: 'Non è stato possibile caricare gli articoli.',
-                visitBlog: 'Visita il blog'
-            },
-            'en': {
-                readMore: 'Read article',
-                errorMessage: 'Unable to load articles.',
-                visitBlog: 'Visit blog'
-            }
+            'fr': { readMore: 'Lire l\'article', errorMessage: 'Impossible de charger les articles.', visitBlog: 'Visitez le blog' },
+            'it': { readMore: 'Leggi l\'articolo', errorMessage: 'Non è stato possibile caricare gli articoli.', visitBlog: 'Visita il blog' },
+            'en': { readMore: 'Read article', errorMessage: 'Unable to load articles.', visitBlog: 'Visit blog' }
         };
 
         const t = translations[locale] || translations['en'];
@@ -174,7 +163,7 @@ async function loadSubstackArticles(feedUrl, containerId, locale) {
         container.innerHTML = `<div class="articles-grid">${articlesHTML}</div>`;
 
     } catch (error) {
-        console.error('Errore nel caricamento degli articoli:', error);
+        console.error('Errore:', error);
         const blogUrl = feedUrl.replace('/feed', '');
         const t = translations[locale] || translations['en'];
 
@@ -191,30 +180,15 @@ async function loadSubstackArticles(feedUrl, containerId, locale) {
 
 // Carica articoli per tutte le lingue
 document.addEventListener('DOMContentLoaded', function () {
-    // Francese
     if (document.getElementById('articles-container-fr')) {
-        loadSubstackArticles(
-            'https://sociocracyexperimentfrance.substack.com/feed',
-            'articles-container-fr',
-            'fr'
-        );
+        loadSubstackArticles('https://sociocracyexperimentfrance.substack.com/feed', 'articles-container-fr', 'fr');
     }
 
-    // Italiano
     if (document.getElementById('articles-container-it')) {
-        loadSubstackArticles(
-            'https://sociocracyexperiment.substack.com/feed',
-            'articles-container-it',
-            'it'
-        );
+        loadSubstackArticles('https://sociocracyexperiment.substack.com/feed', 'articles-container-it', 'it');
     }
 
-    // Inglese (usa feed francese)
     if (document.getElementById('articles-container-en')) {
-        loadSubstackArticles(
-            'https://sociocracyexperimentfrance.substack.com/feed',
-            'articles-container-en',
-            'en'
-        );
+        loadSubstackArticles('https://sociocracyexperimentfrance.substack.com/feed', 'articles-container-en', 'en');
     }
 });
