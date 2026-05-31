@@ -2200,3 +2200,160 @@ footer {
         width: 100%;
     }
 }
+
+/* ============================================================
+   COMPONENTE PROMOZIONALE SCHEDE — .schede-promo
+   ============================================================ */
+.schede-promo *, .schede-promo *::before, .schede-promo *::after { box-sizing: border-box; }
+.schede-promo {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 2.5rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #1a1a18;
+}
+.schede-promo .sp-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #0F6E56;
+    border: 1.5px solid #0F6E56;
+    border-radius: 20px;
+    padding: 3px 12px;
+    margin-bottom: 1.25rem;
+}
+.schede-promo h2 {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 0.75rem;
+    color: #1a1a18;
+}
+.schede-promo .sp-sub {
+    font-size: 16px;
+    color: #5a5a57;
+    max-width: 560px;
+    line-height: 1.65;
+    margin: 0 0 2rem;
+}
+.schede-promo .sp-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+@media (max-width: 620px) {
+    .schede-promo .sp-layout { grid-template-columns: 1fr; }
+}
+.schede-promo .sp-photo {
+    background: #e8e6de;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.schede-promo .sp-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+.schede-promo .sp-photo-placeholder {
+    text-align: center;
+    color: #8a8a85;
+    font-size: 13px;
+    padding: 2rem;
+    line-height: 1.5;
+}
+.schede-promo .sp-photo-placeholder span { display: block; font-size: 32px; margin-bottom: 0.5rem; }
+.schede-promo .sp-details { display: flex; flex-direction: column; gap: 1.25rem; }
+.schede-promo .sp-benefits { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.schede-promo .sp-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 14px;
+    color: #1a1a18;
+    line-height: 1.55;
+}
+.schede-promo .sp-benefits li::before {
+    content: "✓";
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: #E1F5EE;
+    color: #0F6E56;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+.schede-promo .sp-price-block {
+    background: #f5f4f0;
+    border: 0.5px solid rgba(0,0,0,0.15);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.schede-promo .sp-price { display: flex; align-items: baseline; gap: 0.35rem; }
+.schede-promo .sp-price .amount   { font-size: 32px; font-weight: 700; color: #1a1a18; line-height: 1; }
+.schede-promo .sp-price .currency { font-size: 18px; font-weight: 600; color: #5a5a57; }
+.schede-promo .sp-price .incl     { font-size: 12px; color: #8a8a85; margin-left: 0.25rem; }
+.schede-promo .sp-price-note { font-size: 12px; color: #5a5a57; line-height: 1.4; max-width: 180px; }
+.schede-promo .sp-cta {
+    display: block;
+    background: #0F6E56;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    transition: background 0.15s, transform 0.1s;
+    border: none;
+    cursor: pointer;
+}
+.schede-promo .sp-cta:hover  { background: #085041; transform: translateY(-1px); }
+.schede-promo .sp-cta:active { transform: translateY(0); }
+.schede-promo .sp-shipping { font-size: 12px; color: #8a8a85; text-align: center; margin-top: -0.5rem; }
+.schede-promo .sp-divider { border: none; border-top: 0.5px solid rgba(0,0,0,0.12); margin: 0.5rem 0; }
+.schede-promo .sp-online-link {
+    background: #f5f4f0;
+    border: 0.5px solid rgba(0,0,0,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.schede-promo .sp-online-link .sp-ol-text { font-size: 13px; color: #5a5a57; line-height: 1.45; }
+.schede-promo .sp-online-link .sp-ol-text strong { display: block; font-size: 14px; color: #1a1a18; margin-bottom: 0.15rem; font-weight: 600; }
+.schede-promo .sp-online-link a.sp-ol-btn {
+    flex-shrink: 0;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F6E56;
+    text-decoration: none;
+    border: 1.5px solid #0F6E56;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    transition: background 0.12s, color 0.12s;
+}
+.schede-promo .sp-online-link a.sp-ol-btn:hover { background: #0F6E56; color: #fff; }
